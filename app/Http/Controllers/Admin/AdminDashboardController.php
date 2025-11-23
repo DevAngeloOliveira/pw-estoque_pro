@@ -24,7 +24,7 @@ class AdminDashboardController extends Controller
             'active_companies' => Company::where('active', true)->count(),
             'total_products' => Product::count(),
             'total_suppliers' => Supplier::count(),
-            'global_suppliers' => Supplier::where('type', 'global')->count(),
+            'global_suppliers' => Supplier::where('is_global', true)->count(),
             'total_categories' => Category::count(),
             'total_movements' => ProductMovement::count(),
         ];
@@ -39,8 +39,7 @@ class AdminDashboardController extends Controller
 
         // Produtos com estoque baixo (todas as empresas)
         $lowStockProducts = Product::with(['company', 'category'])
-            ->whereColumn('quantity', '<', DB::raw('CAST(quantity * 0.3 AS INTEGER)'))
-            ->orWhere('quantity', '<=', 10)
+            ->where('quantity', '<=', 10)
             ->orderBy('quantity', 'asc')
             ->limit(10)
             ->get();
@@ -117,7 +116,7 @@ class AdminDashboardController extends Controller
             ->groupBy(
                 'suppliers.id',
                 'suppliers.company_id',
-                'suppliers.type',
+                'suppliers.is_global',
                 'suppliers.name',
                 'suppliers.legal_name',
                 'suppliers.cnpj',
@@ -214,5 +213,24 @@ class AdminDashboardController extends Controller
     public function globalSuppliers()
     {
         return view('admin.global-suppliers');
+    }
+
+    /**
+     * Alterna o status ativo/bloqueado da empresa
+     */
+    public function toggleCompanyStatus($id)
+    {
+        try {
+            $company = Company::findOrFail($id);
+            $company->active = !$company->active;
+            $company->save();
+
+            $status = $company->active ? 'liberado' : 'bloqueado';
+            return redirect()->route('admin.companies')
+                ->with('success', "Acesso da empresa {$status} com sucesso!");
+        } catch (\Exception $e) {
+            return redirect()->route('admin.companies')
+                ->with('error', 'Erro ao alterar status: ' . $e->getMessage());
+        }
     }
 }

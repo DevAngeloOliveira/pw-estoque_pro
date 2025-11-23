@@ -4,6 +4,19 @@
 
 @section('content')
     <div class="space-y-6">
+        <!-- Mensagens de Sucesso/Erro -->
+        @if (session('success'))
+            <div class="p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
+                <i class="fas fa-check-circle mr-2"></i>{{ session('success') }}
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div class="p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
+                <i class="fas fa-exclamation-circle mr-2"></i>{{ session('error') }}
+            </div>
+        @endif
+
         <!-- Header -->
         <div class="flex justify-between items-center">
             <div>
@@ -14,7 +27,7 @@
                 <h1 class="text-3xl font-bold text-gray-800">{{ $company->nome_fantasia }}</h1>
                 <p class="text-gray-600 mt-1">{{ $company->razao_social }}</p>
             </div>
-            <div>
+            <div class="flex items-center space-x-3">
                 @if ($company->active)
                     <span class="px-4 py-2 bg-green-100 text-green-800 rounded-lg text-sm font-semibold">
                         <i class="fas fa-check-circle mr-2"></i>Ativa
@@ -24,6 +37,17 @@
                         <i class="fas fa-times-circle mr-2"></i>Inativa
                     </span>
                 @endif
+
+                <form action="{{ route('admin.companies.toggle-status', $company->id) }}" method="POST"
+                    onsubmit="return confirm('Tem certeza que deseja {{ $company->active ? 'bloquear' : 'liberar' }} o acesso desta empresa?')"
+                    class="inline">
+                    @csrf
+                    <button type="submit"
+                        class="px-4 py-2 rounded-lg text-white font-semibold transition {{ $company->active ? 'bg-red-600 hover:bg-red-700' : 'bg-green-600 hover:bg-green-700' }}">
+                        <i class="fas fa-{{ $company->active ? 'lock' : 'unlock' }} mr-2"></i>
+                        {{ $company->active ? 'Bloquear Acesso' : 'Liberar Acesso' }}
+                    </button>
+                </form>
             </div>
         </div>
 

@@ -100,6 +100,24 @@ class CompanyManager extends Component
         }
     }
 
+    public function toggleStatus($companyId)
+    {
+        try {
+            $company = Company::findOrFail($companyId);
+            $company->active = !$company->active;
+            $company->save();
+
+            $status = $company->active ? 'ativada' : 'bloqueada';
+            $this->dispatchBrowserEvent('company-status-updated', [
+                'message' => "Empresa {$status} com sucesso!"
+            ]);
+        } catch (\Exception $e) {
+            $this->dispatchBrowserEvent('company-error', [
+                'message' => 'Erro ao alterar status da empresa: ' . $e->getMessage()
+            ]);
+        }
+    }
+
     public function render()
     {
         return view('livewire.admin.company-manager');

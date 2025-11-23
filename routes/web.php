@@ -49,6 +49,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
             ->name('companies.create');
         Route::get('/companies/{id}/edit', [App\Http\Controllers\Admin\AdminDashboardController::class, 'editCompany'])
             ->name('companies.edit');
+        Route::post('/companies/{id}/toggle-status', [App\Http\Controllers\Admin\AdminDashboardController::class, 'toggleCompanyStatus'])
+            ->name('companies.toggle-status');
 
         // Fornecedores Globais
         Route::get('/global-suppliers', [App\Http\Controllers\Admin\AdminDashboardController::class, 'globalSuppliers'])

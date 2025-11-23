@@ -4,6 +4,19 @@
 
 @section('content')
     <div class="space-y-6">
+        <!-- Mensagens de Sucesso/Erro -->
+        @if (session('success'))
+            <div class="p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
+                <i class="fas fa-check-circle mr-2"></i>{{ session('success') }}
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div class="p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
+                <i class="fas fa-exclamation-circle mr-2"></i>{{ session('error') }}
+            </div>
+        @endif
+
         <!-- Header -->
         <div class="flex justify-between items-center">
             <div>
@@ -78,6 +91,17 @@
                                             class="text-blue-600 hover:text-blue-800" title="Editar">
                                             <i class="fas fa-edit"></i>
                                         </a>
+                                        <form action="{{ route('admin.companies.toggle-status', $company->id) }}"
+                                            method="POST"
+                                            onsubmit="return confirm('Tem certeza que deseja {{ $company->active ? 'bloquear' : 'liberar' }} o acesso desta empresa?')"
+                                            class="inline">
+                                            @csrf
+                                            <button type="submit"
+                                                class="{{ $company->active ? 'text-red-600 hover:text-red-800' : 'text-green-600 hover:text-green-800' }}"
+                                                title="{{ $company->active ? 'Bloquear acesso' : 'Liberar acesso' }}">
+                                                <i class="fas fa-{{ $company->active ? 'lock' : 'unlock' }}"></i>
+                                            </button>
+                                        </form>
                                     </div>
                                 </td>
                             </tr>

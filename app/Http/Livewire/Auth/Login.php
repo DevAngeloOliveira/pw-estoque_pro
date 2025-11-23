@@ -28,7 +28,7 @@ class Login extends Component
     public function updated($propertyName)
     {
         $this->validateOnly($propertyName);
-        
+
         if ($propertyName === 'cnpj') {
             $this->cnpj = $this->formatCnpj($this->cnpj);
         }
@@ -37,11 +37,11 @@ class Login extends Component
     public function formatCnpj($cnpj)
     {
         $cnpj = preg_replace('/\D/', '', $cnpj);
-        
+
         if (strlen($cnpj) <= 14) {
             $cnpj = preg_replace('/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/', '$1.$2.$3/$4-$5', $cnpj);
         }
-        
+
         return $cnpj;
     }
 
@@ -50,11 +50,16 @@ class Login extends Component
         $this->validate();
 
         $cnpjClean = preg_replace('/\D/', '', $this->cnpj);
-        
-        $company = Company::where('cnpj', $cnpjClean)->where('active', true)->first();
+
+        $company = Company::where('cnpj', $cnpjClean)->first();
 
         if (!$company) {
-            $this->addError('cnpj', 'Empresa não encontrada ou inativa');
+            $this->addError('cnpj', 'CNPJ não encontrado em nosso sistema');
+            return;
+        }
+
+        if (!$company->active) {
+            $this->addError('cnpj', '⚠️ Acesso bloqueado! Sua empresa está com o acesso suspenso. Entre em contato com o administrador do sistema.');
             return;
         }
 
