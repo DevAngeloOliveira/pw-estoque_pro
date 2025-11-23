@@ -87,6 +87,7 @@ Route::middleware(['auth:company', 'tenant'])->group(function () {
     // Cada empresa é isolada e gerencia apenas seus próprios dados
     // Para administração de empresas, criar um painel admin separado
     /*
+
     Route::get('/companies', function () {
         return view('companies.index');
     })->name('companies.index');
