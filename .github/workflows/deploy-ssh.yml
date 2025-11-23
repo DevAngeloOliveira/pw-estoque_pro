@@ -1,0 +1,94 @@
+name: Deploy via SSH
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup PHP 8.1
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          extensions: mbstring, zip, exif, pcntl, gd, pdo_mysql
+          coverage: none
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: Install Composer dependencies
+        run: composer install --no-interaction --prefer-dist --optimize-autoloader
+
+      - name: Setup Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install Node dependencies and build assets
+        run: |
+          npm ci
+          npm run production
+
+      - name: Create deployment archive
+        run: |
+          tar -czf deploy.tar.gz \
+            --exclude=vendor \
+            --exclude=node_modules \
+            --exclude=.git \
+            --exclude=.github \
+            --exclude=tests \
+            --exclude=storage/logs/*.log \
+            .
+
+      - name: Copy archive to server via SCP
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_PORT: ${{ secrets.SSH_PORT || '22' }}
+          TARGET_DIR: ${{ secrets.TARGET_DIR }}
+        run: |
+          echo "$SSH_PRIVATE_KEY" > private_key
+          chmod 600 private_key
+          scp -i private_key -o StrictHostKeyChecking=no -P $SSH_PORT deploy.tar.gz $SSH_USERNAME@$SSH_HOST:$TARGET_DIR/
+          rm -f private_key
+
+      - name: Execute remote commands
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_PORT: ${{ secrets.SSH_PORT || '22' }}
+          TARGET_DIR: ${{ secrets.TARGET_DIR }}
+          SKIP_MIGRATIONS: ${{ secrets.SKIP_MIGRATIONS }}
+        run: |
+          echo "$SSH_PRIVATE_KEY" > private_key
+          chmod 600 private_key
+          ssh -i private_key -o StrictHostKeyChecking=no -p $SSH_PORT $SSH_USERNAME@$SSH_HOST << 'ENDSSH'
+            cd $TARGET_DIR
+            tar -xzf deploy.tar.gz
+            rm deploy.tar.gz
+            composer install --no-dev --optimize-autoloader
+            php artisan storage:link
+            sudo chown -R www-data:www-data storage bootstrap/cache
+            if [ "$SKIP_MIGRATIONS" != "true" ]; then
+              php artisan migrate --force
+            fi
+            php artisan config:cache
+            php artisan route:cache
+            php artisan view:cache
+          ENDSSH
+          rm -f private_key
