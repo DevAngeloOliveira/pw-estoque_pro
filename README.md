@@ -3,8 +3,9 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Laravel-8.83.29-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" alt="Laravel">
   <img src="https://img.shields.io/badge/Livewire-2.x-4E56A6?style=for-the-badge&logo=livewire&logoColor=white" alt="Livewire">
-  <img src="https://img.shields.io/badge/PHP-8.x-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP">
-  <img src="https://img.shields.io/badge/SQLite-Database-003B57?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite">
+  <img src="https://img.shields.io/badge/PHP-8.3-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP">
+  <img src="https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL">
+  <img src="https://img.shields.io/badge/Docker-Enabled-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker">
   <img src="https://img.shields.io/badge/TailwindCSS-3.x-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind">
 </p>
 
@@ -39,10 +40,16 @@
 ## 🛠️ Tecnologias Utilizadas
 
 ### Backend
-- **Laravel 8.6.12** - Framework PHP para desenvolvimento web
+- **Laravel 8.83.29** - Framework PHP para desenvolvimento web
 - **Livewire 2.12.8** - Framework full-stack para interfaces dinâmicas
-- **PHP 7.4.3** - Linguagem de programação
-- **SQLite** - Banco de dados leve e eficiente
+- **PHP 8.3** - Linguagem de programação
+- **MySQL 8.0** - Banco de dados relacional
+
+### Infrastructure
+- **Docker** - Containerização da aplicação
+- **Docker Compose** - Orquestração de containers
+- **Nginx** - Servidor web
+- **Redis** - Sistema de cache
 
 ### Frontend
 - **Tailwind CSS** - Framework CSS utility-first
@@ -138,53 +145,161 @@ projeto-laravel/
 
 ### Pré-requisitos
 
-- PHP 7.4 ou superior
-- Composer
-- XAMPP ou servidor web similar
+- Docker Desktop
+- Docker Compose
+- Git
 
-### Passo a Passo
+### 🐳 Instalação com Docker (Recomendado)
 
 1. **Clone o repositório**
 ```bash
-cd c:\xampp\htdocs\pw_crud_serv
-git clone <seu-repositorio> projeto-laravel
-cd projeto-laravel
+git clone https://github.com/DevAngeloOliveira/pw-estoque_pro.git
+cd pw-estoque_pro
 ```
 
-2. **Instale as dependências**
+2. **Configure o ambiente**
 ```bash
+# No Windows (PowerShell)
+Copy-Item -Path ".env.example" -Destination ".env"
+
+# No Linux/Mac
+cp .env.example .env
+```
+
+3. **Inicie os containers Docker**
+```bash
+docker compose up -d --build
+```
+
+4. **Execute as migrations e seeders**
+```bash
+docker compose exec app php artisan migrate:fresh --seed
+```
+
+5. **Acesse o sistema**
+- 🌐 **Aplicação**: http://localhost:8080
+- 🔐 **Login Admin**: http://localhost:8080/admin/login
+- 🏢 **Login Empresa**: http://localhost:8080/login
+
+### 📦 Serviços Docker
+
+O projeto utiliza os seguintes containers:
+
+- **app**: Aplicação Laravel (PHP 8.3-fpm)
+- **nginx**: Servidor web (porta 8080)
+- **db**: MySQL 8.0 (porta 3306)
+- **redis**: Cache Redis (porta 6379)
+
+### 🛠️ Comandos Úteis Docker
+
+```bash
+# Verificar status dos containers
+docker compose ps
+
+# Ver logs da aplicação
+docker compose logs app
+
+# Parar os containers
+docker compose down
+
+# Reiniciar os containers
+docker compose restart
+
+# Executar comandos artisan
+docker compose exec app php artisan <comando>
+
+# Acessar o container da aplicação
+docker compose exec app bash
+
+# Limpar cache
+docker compose exec app php artisan cache:clear
+docker compose exec app php artisan config:clear
+```
+
+---
+
+## 💾 Configuração do Banco de Dados
+
+### Credenciais Docker (padrão)
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=db
+DB_PORT=3306
+DB_DATABASE=estoque_pro
+DB_USERNAME=estoque_user
+DB_PASSWORD=secret
+```
+
+### 📊 Acesso ao MySQL
+
+Para conectar ao banco de dados MySQL externamente:
+
+```bash
+Host: localhost
+Port: 3306
+Database: estoque_pro
+Username: estoque_user
+Password: secret
+```
+
+Ou use root:
+
+```bash
+Username: root
+Password: root
+```
+
+---
+
+## 🔧 Instalação Local (Sem Docker)
+
+Se preferir rodar sem Docker:
+
+### Pré-requisitos
+- PHP 8.3 ou superior
+- Composer
+- MySQL 8.0 ou superior
+- Node.js e NPM
+
+### Passos
+
+1. **Clone e configure**
+```bash
+git clone https://github.com/DevAngeloOliveira/pw-estoque_pro.git
+cd pw-estoque_pro
 composer install
-```
-
-3. **Configure o ambiente**
-```bash
+npm install
 cp .env.example .env
 php artisan key:generate
 ```
 
-4. **Configure o banco de dados no `.env`**
+2. **Configure o banco no `.env`**
 ```env
-DB_CONNECTION=sqlite
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=estoque_pro
+DB_USERNAME=root
+DB_PASSWORD=sua_senha
 ```
 
-5. **Crie o banco de dados**
-```bash
-touch database/database.sqlite
-```
-
-6. **Execute as migrations e seeders**
+3. **Execute migrations**
 ```bash
 php artisan migrate:fresh --seed
 ```
 
-7. **Inicie o servidor**
+4. **Compile assets**
+```bash
+npm run production
+```
+
+5. **Inicie o servidor**
 ```bash
 php artisan serve
 ```
 
-8. **Acesse o sistema**
-- Homepage: `http://127.0.0.1:8000`
-- Login: `http://127.0.0.1:8000/login`
+6. **Acesse**: http://127.0.0.1:8000
 
 ---
 
