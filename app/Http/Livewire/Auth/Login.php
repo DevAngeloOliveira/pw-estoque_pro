@@ -50,21 +50,17 @@ class Login extends Component
         $this->validate();
 
         $cnpjClean = preg_replace('/\D/', '', $this->cnpj);
-
         $company = Company::where('cnpj', $cnpjClean)->first();
 
-        if (!$company) {
-            $this->addError('cnpj', 'CNPJ não encontrado em nosso sistema');
-            return;
-        }
+        $errors = collect([
+            'company_not_found' => fn() => !$company ? 'CNPJ não encontrado em nosso sistema' : null,
+            'company_inactive' => fn() => $company && !$company->active ? '⚠️ Acesso bloqueado! Sua empresa está com o acesso suspenso. Entre em contato com o administrador do sistema.' : null,
+            'invalid_password' => fn() => $company && !Hash::check($this->password, $company->password) ? 'Senha incorreta' : null,
+        ])->map(fn($validator) => $validator())->filter()->first();
 
-        if (!$company->active) {
-            $this->addError('cnpj', '⚠️ Acesso bloqueado! Sua empresa está com o acesso suspenso. Entre em contato com o administrador do sistema.');
-            return;
-        }
-
-        if (!Hash::check($this->password, $company->password)) {
-            $this->addError('password', 'Senha incorreta');
+        if ($errors) {
+            $field = str_contains($errors, 'Senha') ? 'password' : 'cnpj';
+            $this->addError($field, $errors);
             return;
         }
 
@@ -76,6 +72,6 @@ class Login extends Component
 
     public function render()
     {
-        return view('livewire.auth.login')->layout('components.guest-layout');
+        return view('livewire.auth.login');
     }
 }
