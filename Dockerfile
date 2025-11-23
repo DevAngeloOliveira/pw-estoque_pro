@@ -7,7 +7,7 @@ WORKDIR /app
 COPY package.json package-lock.json* ./
 
 # Install Node dependencies
-RUN npm ci
+RUN npm install
 
 # Copy frontend source files
 COPY webpack.mix.js ./
@@ -18,7 +18,7 @@ COPY public ./public
 RUN npm run production
 
 # Stage 2: Application
-FROM php:8.1-fpm
+FROM php:8.3-fpm
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \

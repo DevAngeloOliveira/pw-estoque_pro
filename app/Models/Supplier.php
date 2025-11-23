@@ -65,7 +65,7 @@ class Supplier extends Model
      */
     public function isCompany()
     {
-        return $this->type === 'company';
+        return !$this->is_global;
     }
 
     /**
@@ -73,7 +73,7 @@ class Supplier extends Model
      */
     public function scopeGlobal($query)
     {
-        return $query->where('type', 'global');
+        return $query->where('is_global', true);
     }
 
     /**
@@ -81,7 +81,7 @@ class Supplier extends Model
      */
     public function scopeOfCompany($query, $companyId)
     {
-        return $query->where('type', 'company')->where('company_id', $companyId);
+        return $query->where('is_global', false)->where('company_id', $companyId);
     }
 
     /**
