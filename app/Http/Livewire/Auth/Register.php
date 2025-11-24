@@ -16,6 +16,7 @@ class Register extends Component
     public $email;
     public $telefone;
     public $endereco;
+    public $active = true;
 
     protected $rules = [
         'cnpj' => 'required|size:18|unique:companies,cnpj',
@@ -42,11 +43,11 @@ class Register extends Component
     public function updated($propertyName)
     {
         $this->validateOnly($propertyName);
-        
+
         if ($propertyName === 'cnpj') {
             $this->cnpj = $this->formatCnpj($this->cnpj);
         }
-        
+
         if ($propertyName === 'telefone') {
             $this->telefone = $this->formatTelefone($this->telefone);
         }
@@ -55,24 +56,24 @@ class Register extends Component
     public function formatCnpj($cnpj)
     {
         $cnpj = preg_replace('/\D/', '', $cnpj);
-        
+
         if (strlen($cnpj) <= 14) {
             $cnpj = preg_replace('/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/', '$1.$2.$3/$4-$5', $cnpj);
         }
-        
+
         return $cnpj;
     }
 
     public function formatTelefone($telefone)
     {
         $telefone = preg_replace('/\D/', '', $telefone);
-        
+
         if (strlen($telefone) == 11) {
             return preg_replace('/(\d{2})(\d{5})(\d{4})/', '($1) $2-$3', $telefone);
         } elseif (strlen($telefone) == 10) {
             return preg_replace('/(\d{2})(\d{4})(\d{4})/', '($1) $2-$3', $telefone);
         }
-        
+
         return $telefone;
     }
 
@@ -93,7 +94,7 @@ class Register extends Component
             'email' => $this->email,
             'telefone' => $this->telefone,
             'endereco' => $this->endereco,
-            'active' => true,
+            'active' => $this->active ?? true,
         ]);
 
         Auth::guard('company')->login($company);

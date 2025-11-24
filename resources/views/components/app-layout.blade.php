@@ -7,9 +7,14 @@
     <title>Sistema de Estoque Multi-Empresas</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('css/modern-theme.css') }}">
 
     <!-- DataTables -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
@@ -135,80 +140,110 @@
     </style>
 </head>
 
-<body class="bg-gradient-to-br from-gray-50 to-gray-100">
+<body class="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50" style="font-family: 'Inter', sans-serif;">
     <div class="flex h-screen overflow-hidden">
-        <!-- Sidebar -->
-        <aside id="sidebar"
-            class="w-64 bg-gradient-to-b from-blue-900 to-blue-800 text-white flex-shrink-0 overflow-y-auto shadow-2xl">
-            <div class="p-6 border-b border-blue-700">
-                <h1 class="text-2xl font-bold flex items-center">
-                    <i class="fas fa-boxes mr-3"></i>
-                    Estoque Pro
-                </h1>
+        <!-- Modern Sidebar -->
+        <aside id="sidebar" class="modern-sidebar fixed left-0 top-0 h-screen overflow-y-auto z-40">
+            <div class="p-6 border-b border-gray-100">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div
+                        class="w-12 h-12 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
+                        <i class="fas fa-boxes text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-black text-gray-900 tracking-tight">Estoque Pro</h1>
+                        <p class="text-xs text-gray-500">Sistema de Gestão</p>
+                    </div>
+                </div>
                 @php
                     $loggedCompany = Auth::guard('company')->user();
                 @endphp
                 @if ($loggedCompany)
-                    <div class="mt-3 text-xs bg-blue-700 rounded-lg p-2">
-                        <div class="font-semibold">{{ $loggedCompany->nome_fantasia ?? $loggedCompany->razao_social }}
+                    <div
+                        class="mt-4 p-3 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl border border-indigo-100">
+                        <div class="flex items-center space-x-2 mb-2">
+                            <div
+                                class="w-8 h-8 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center text-white text-xs font-bold">
+                                {{ strtoupper(substr($loggedCompany->nome_fantasia ?? $loggedCompany->razao_social, 0, 1)) }}
+                            </div>
+                            <div class="flex-1">
+                                <div class="font-bold text-sm text-gray-900 truncate">
+                                    {{ $loggedCompany->nome_fantasia ?? $loggedCompany->razao_social }}</div>
+                            </div>
                         </div>
-                        <div class="text-blue-300">{{ $loggedCompany->formatted_cnpj }}</div>
+                        <div class="text-xs text-gray-500 font-mono">{{ $loggedCompany->formatted_cnpj }}</div>
                     </div>
                 @endif
             </div>
 
-            <nav class="p-4 space-y-2">
-                <a href="{{ route('dashboard') }}"
-                    class="flex items-center px-4 py-3 rounded-lg hover:bg-blue-700 transition transform hover:scale-105 {{ request()->routeIs('dashboard') ? 'bg-blue-700' : '' }}">
-                    <i class="fas fa-th-large w-6"></i>
-                    <span class="ml-3">Dashboard</span>
-                </a>
+            <nav class="py-6">
+                <div class="px-4 mb-4">
+                    <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Menu Principal</p>
 
-                <div class="border-t border-blue-700 my-2"></div>
+                    <a href="{{ route('dashboard') }}"
+                        class="sidebar-link flex items-center {{ request()->routeIs('dashboard') ? 'active' : 'text-gray-700' }}">
+                        <div
+                            class="w-8 h-8 flex items-center justify-center {{ request()->routeIs('dashboard') ? 'text-white' : 'text-indigo-600' }}">
+                            <i class="fas fa-th-large"></i>
+                        </div>
+                        <span class="ml-3 font-medium">Dashboard</span>
+                    </a>
+                </div>
 
-                <a href="{{ route('products.index') }}"
-                    class="flex items-center px-4 py-3 rounded-lg hover:bg-blue-700 transition transform hover:scale-105 {{ request()->routeIs('products.*') ? 'bg-blue-700' : '' }}">
-                    <i class="fas fa-box w-6"></i>
-                    <span class="ml-3">Produtos</span>
-                </a>
+                <div class="border-t border-gray-100 my-4"></div>
 
-                <a href="{{ route('categories.index') }}"
-                    class="flex items-center px-4 py-3 rounded-lg hover:bg-blue-700 transition transform hover:scale-105 {{ request()->routeIs('categories.*') ? 'bg-blue-700' : '' }}">
-                    <i class="fas fa-tags w-6"></i>
-                    <span class="ml-3">Categorias</span>
-                </a>
+                <div class="px-4 mb-4">
+                    <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Gestão</p>
 
-                <a href="{{ route('suppliers.index') }}"
-                    class="flex items-center px-4 py-3 rounded-lg hover:bg-blue-700 transition transform hover:scale-105 {{ request()->routeIs('suppliers.*') ? 'bg-blue-700' : '' }}">
-                    <i class="fas fa-truck w-6"></i>
-                    <span class="ml-3">Fornecedores</span>
-                </a>
+                    <a href="{{ route('products.index') }}"
+                        class="sidebar-link flex items-center {{ request()->routeIs('products.*') ? 'active' : 'text-gray-700' }}">
+                        <div
+                            class="w-8 h-8 flex items-center justify-center {{ request()->routeIs('products.*') ? 'text-white' : 'text-indigo-600' }}">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <span class="ml-3 font-medium">Produtos</span>
+                    </a>
 
-                <a href="{{ route('movements.index') }}"
-                    class="flex items-center px-4 py-3 rounded-lg hover:bg-blue-700 transition transform hover:scale-105 {{ request()->routeIs('movements.*') ? 'bg-blue-700' : '' }}">
-                    <i class="fas fa-exchange-alt w-6"></i>
-                    <span class="ml-3">Movimentações</span>
-                </a>
+                    <a href="{{ route('categories.index') }}"
+                        class="sidebar-link flex items-center {{ request()->routeIs('categories.*') ? 'active' : 'text-gray-700' }}">
+                        <div
+                            class="w-8 h-8 flex items-center justify-center {{ request()->routeIs('categories.*') ? 'text-white' : 'text-indigo-600' }}">
+                            <i class="fas fa-tags"></i>
+                        </div>
+                        <span class="ml-3 font-medium">Categorias</span>
+                    </a>
 
-                <a href="{{ route('audit.index') }}"
-                    class="flex items-center px-4 py-3 rounded-lg hover:bg-blue-700 transition transform hover:scale-105 {{ request()->routeIs('audit.*') ? 'bg-blue-700' : '' }}">
-                    <i class="fas fa-history w-6"></i>
-                    <span class="ml-3">Auditoria</span>
-                </a>
+                    <a href="{{ route('suppliers.index') }}"
+                        class="flex items-center px-4 py-3 rounded-lg hover:bg-blue-700 transition transform hover:scale-105 {{ request()->routeIs('suppliers.*') ? 'bg-blue-700' : '' }}">
+                        <i class="fas fa-truck w-6"></i>
+                        <span class="ml-3">Fornecedores</span>
+                    </a>
 
-                <div class="border-t border-blue-700 my-2"></div>
+                    <a href="{{ route('movements.index') }}"
+                        class="flex items-center px-4 py-3 rounded-lg hover:bg-blue-700 transition transform hover:scale-105 {{ request()->routeIs('movements.*') ? 'bg-blue-700' : '' }}">
+                        <i class="fas fa-exchange-alt w-6"></i>
+                        <span class="ml-3">Movimentações</span>
+                    </a>
 
-                <a href="{{ route('profile') }}"
-                    class="flex items-center px-4 py-3 rounded-lg hover:bg-blue-700 transition transform hover:scale-105 {{ request()->routeIs('profile') ? 'bg-blue-700' : '' }}">
-                    <i class="fas fa-user-circle w-6"></i>
-                    <span class="ml-3">Meu Perfil</span>
-                </a>
+                    <a href="{{ route('audit.index') }}"
+                        class="flex items-center px-4 py-3 rounded-lg hover:bg-blue-700 transition transform hover:scale-105 {{ request()->routeIs('audit.*') ? 'bg-blue-700' : '' }}">
+                        <i class="fas fa-history w-6"></i>
+                        <span class="ml-3">Auditoria</span>
+                    </a>
 
-                <a href="{{ route('logout') }}"
-                    class="flex items-center px-4 py-3 rounded-lg hover:bg-red-600 transition transform hover:scale-105">
-                    <i class="fas fa-sign-out-alt w-6"></i>
-                    <span class="ml-3">Sair</span>
-                </a>
+                    <div class="border-t border-blue-700 my-2"></div>
+
+                    <a href="{{ route('profile') }}"
+                        class="flex items-center px-4 py-3 rounded-lg hover:bg-blue-700 transition transform hover:scale-105 {{ request()->routeIs('profile') ? 'bg-blue-700' : '' }}">
+                        <i class="fas fa-user-circle w-6"></i>
+                        <span class="ml-3">Meu Perfil</span>
+                    </a>
+
+                    <a href="{{ route('logout') }}"
+                        class="flex items-center px-4 py-3 rounded-lg hover:bg-red-600 transition transform hover:scale-105">
+                        <i class="fas fa-sign-out-alt w-6"></i>
+                        <span class="ml-3">Sair</span>
+                    </a>
             </nav>
         </aside>
 

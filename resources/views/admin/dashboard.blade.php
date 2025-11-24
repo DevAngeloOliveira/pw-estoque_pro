@@ -3,112 +3,158 @@
 @section('title', 'Dashboard')
 
 @section('content')
-    <div class="space-y-6">
-        <!-- Header -->
-        <div class="flex justify-between items-center">
+    <div class="space-y-8">
+        <!-- Modern Header -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
             <div>
-                <h1 class="text-3xl font-bold text-gray-800">Dashboard Geral</h1>
-                <p class="text-gray-600 mt-1">Visão consolidada do sistema</p>
+                <h1 class="text-4xl font-bold text-gray-900 tracking-tight">Dashboard Geral</h1>
+                <p class="text-gray-500 mt-2 flex items-center">
+                    <i class="fas fa-chart-bar mr-2 text-indigo-600"></i>
+                    Visão consolidada do sistema
+                </p>
             </div>
-            <div class="text-right text-sm text-gray-500">
-                <i class="fas fa-calendar mr-2"></i>{{ now()->format('d/m/Y H:i') }}
+            <div class="flex items-center space-x-3 bg-white px-5 py-3 rounded-2xl shadow-sm border border-gray-100">
+                <i class="fas fa-calendar text-indigo-600"></i>
+                <div class="text-sm">
+                    <p class="font-semibold text-gray-900">{{ now()->format('d/m/Y') }}</p>
+                    <p class="text-gray-500">{{ now()->format('H:i') }}</p>
+                </div>
             </div>
         </div>
 
-        <!-- Stats Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Modern Stats Cards with Gradients -->
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
             <!-- Total Companies -->
-            <div class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg p-6 text-white">
-                <div class="flex justify-between items-start">
-                    <div>
-                        <p class="text-blue-100 text-sm font-medium">Empresas</p>
-                        <h3 class="text-3xl font-bold mt-2">{{ $stats['total_companies'] }}</h3>
-                        <p class="text-blue-100 text-xs mt-2">{{ $stats['active_companies'] }} ativas</p>
+            <div class="stat-card stat-card-blue relative overflow-hidden group">
+                <div class="relative z-10">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center backdrop-blur-sm">
+                            <i class="fas fa-building text-3xl"></i>
+                        </div>
+                        <span class="px-3 py-1 bg-white/20 rounded-full text-xs font-semibold backdrop-blur-sm">
+                            {{ $stats['active_companies'] }}/{{ $stats['total_companies'] }}
+                        </span>
                     </div>
-                    <div class="bg-white/20 p-3 rounded-lg">
-                        <i class="fas fa-building text-2xl"></i>
+                    <h3 class="text-4xl font-black mb-2">{{ $stats['total_companies'] }}</h3>
+                    <p class="text-white/90 font-medium">Empresas Cadastradas</p>
+                    <div class="mt-4 flex items-center text-sm">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        <span>{{ $stats['active_companies'] }} ativas</span>
                     </div>
                 </div>
             </div>
 
             <!-- Total Products -->
-            <div class="bg-gradient-to-br from-green-500 to-green-600 rounded-xl shadow-lg p-6 text-white">
-                <div class="flex justify-between items-start">
-                    <div>
-                        <p class="text-green-100 text-sm font-medium">Produtos</p>
-                        <h3 class="text-3xl font-bold mt-2">{{ $stats['total_products'] }}</h3>
-                        <p class="text-green-100 text-xs mt-2">Total cadastrados</p>
+            <div class="stat-card stat-card-green relative overflow-hidden group">
+                <div class="relative z-10">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center backdrop-blur-sm">
+                            <i class="fas fa-box text-3xl"></i>
+                        </div>
+                        <span class="px-3 py-1 bg-white/20 rounded-full text-xs font-semibold backdrop-blur-sm">
+                            PRODUTOS
+                        </span>
                     </div>
-                    <div class="bg-white/20 p-3 rounded-lg">
-                        <i class="fas fa-box text-2xl"></i>
+                    <h3 class="text-4xl font-black mb-2">{{ $stats['total_products'] }}</h3>
+                    <p class="text-white/90 font-medium">Total de Produtos</p>
+                    <div class="mt-4 flex items-center text-sm">
+                        <i class="fas fa-cubes mr-2"></i>
+                        <span>Cadastrados no sistema</span>
                     </div>
                 </div>
             </div>
 
             <!-- Total Suppliers -->
-            <div class="bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl shadow-lg p-6 text-white">
-                <div class="flex justify-between items-start">
-                    <div>
-                        <p class="text-purple-100 text-sm font-medium">Fornecedores</p>
-                        <h3 class="text-3xl font-bold mt-2">{{ $stats['total_suppliers'] }}</h3>
-                        <p class="text-purple-100 text-xs mt-2">{{ $stats['global_suppliers'] }} globais</p>
+            <div class="stat-card stat-card-purple relative overflow-hidden group">
+                <div class="relative z-10">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center backdrop-blur-sm">
+                            <i class="fas fa-truck text-3xl"></i>
+                        </div>
+                        <span class="px-3 py-1 bg-white/20 rounded-full text-xs font-semibold backdrop-blur-sm">
+                            {{ $stats['global_suppliers'] }} GLOBAIS
+                        </span>
                     </div>
-                    <div class="bg-white/20 p-3 rounded-lg">
-                        <i class="fas fa-truck text-2xl"></i>
+                    <h3 class="text-4xl font-black mb-2">{{ $stats['total_suppliers'] }}</h3>
+                    <p class="text-white/90 font-medium">Fornecedores</p>
+                    <div class="mt-4 flex items-center text-sm">
+                        <i class="fas fa-globe mr-2"></i>
+                        <span>{{ $stats['global_suppliers'] }} fornecedores globais</span>
                     </div>
                 </div>
             </div>
 
             <!-- Stock Value -->
-            <div class="bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl shadow-lg p-6 text-white">
-                <div class="flex justify-between items-start">
-                    <div>
-                        <p class="text-orange-100 text-sm font-medium">Valor Estoque</p>
-                        <h3 class="text-3xl font-bold mt-2">R$ {{ number_format($stats['total_stock_value'], 2, ',', '.') }}
-                        </h3>
-                        <p class="text-orange-100 text-xs mt-2">Total geral</p>
+            <div class="stat-card stat-card-orange relative overflow-hidden group">
+                <div class="relative z-10">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center backdrop-blur-sm">
+                            <i class="fas fa-dollar-sign text-3xl"></i>
+                        </div>
+                        <span class="px-3 py-1 bg-white/20 rounded-full text-xs font-semibold backdrop-blur-sm">
+                            TOTAL
+                        </span>
                     </div>
-                    <div class="bg-white/20 p-3 rounded-lg">
-                        <i class="fas fa-dollar-sign text-2xl"></i>
+                    <h3 class="text-3xl font-black mb-2">R$ {{ number_format($stats['total_stock_value'], 2, ',', '.') }}
+                    </h3>
+                    <p class="text-white/90 font-medium">Valor em Estoque</p>
+                    <div class="mt-4 flex items-center text-sm">
+                        <i class="fas fa-chart-line mr-2"></i>
+                        <span>Valor total geral</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Additional Stats -->
+        <!-- Additional Stats with Modern Cards -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-white rounded-xl shadow p-6">
-                <div class="flex items-center">
-                    <div class="bg-indigo-100 p-3 rounded-lg">
-                        <i class="fas fa-tags text-indigo-600 text-xl"></i>
+            <div class="modern-card p-6 bg-gradient-to-br from-white to-indigo-50">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-500 text-sm font-medium mb-1">Categorias</p>
+                        <p class="text-4xl font-black text-gray-900">{{ $stats['total_categories'] }}</p>
+                        <div class="mt-3 flex items-center text-xs text-indigo-600 font-semibold">
+                            <div class="w-2 h-2 bg-indigo-600 rounded-full mr-2 animate-pulse"></div>
+                            Cadastradas
+                        </div>
                     </div>
-                    <div class="ml-4">
-                        <p class="text-gray-500 text-sm">Categorias</p>
-                        <p class="text-2xl font-bold text-gray-800">{{ $stats['total_categories'] }}</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-xl shadow p-6">
-                <div class="flex items-center">
-                    <div class="bg-cyan-100 p-3 rounded-lg">
-                        <i class="fas fa-exchange-alt text-cyan-600 text-xl"></i>
-                    </div>
-                    <div class="ml-4">
-                        <p class="text-gray-500 text-sm">Movimentações (7 dias)</p>
-                        <p class="text-2xl font-bold text-gray-800">{{ $stats['recent_movements'] }}</p>
+                    <div
+                        class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
+                        <i class="fas fa-tags text-white text-2xl"></i>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-white rounded-xl shadow p-6">
-                <div class="flex items-center">
-                    <div class="bg-pink-100 p-3 rounded-lg">
-                        <i class="fas fa-chart-line text-pink-600 text-xl"></i>
+            <div class="modern-card p-6 bg-gradient-to-br from-white to-cyan-50">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-500 text-sm font-medium mb-1">Movimentações (7 dias)</p>
+                        <p class="text-4xl font-black text-gray-900">{{ $stats['recent_movements'] }}</p>
+                        <div class="mt-3 flex items-center text-xs text-cyan-600 font-semibold">
+                            <div class="w-2 h-2 bg-cyan-600 rounded-full mr-2 animate-pulse"></div>
+                            Última semana
+                        </div>
                     </div>
-                    <div class="ml-4">
-                        <p class="text-gray-500 text-sm">Total Movimentações</p>
-                        <p class="text-2xl font-bold text-gray-800">{{ $stats['total_movements'] }}</p>
+                    <div
+                        class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
+                        <i class="fas fa-exchange-alt text-white text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modern-card p-6 bg-gradient-to-br from-white to-pink-50">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-500 text-sm font-medium mb-1">Total Movimentações</p>
+                        <p class="text-4xl font-black text-gray-900">{{ $stats['total_movements'] }}</p>
+                        <div class="mt-3 flex items-center text-xs text-pink-600 font-semibold">
+                            <div class="w-2 h-2 bg-pink-600 rounded-full mr-2 animate-pulse"></div>
+                            Histórico completo
+                        </div>
+                    </div>
+                    <div
+                        class="w-16 h-16 bg-gradient-to-br from-pink-500 to-red-600 rounded-2xl flex items-center justify-center shadow-lg">
+                        <i class="fas fa-chart-line text-white text-2xl"></i>
                     </div>
                 </div>
             </div>
@@ -116,74 +162,120 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <!-- Top Companies -->
-            <div class="bg-white rounded-xl shadow">
-                <div class="p-6 border-b">
-                    <h3 class="text-lg font-bold text-gray-800">
-                        <i class="fas fa-trophy text-yellow-500 mr-2"></i>
-                        Empresas Mais Ativas (30 dias)
+            <div class="modern-card overflow-hidden">
+                <div class="p-6 border-b border-gray-100 bg-gradient-to-r from-yellow-50 to-orange-50">
+                    <h3 class="text-xl font-black text-gray-900 flex items-center">
+                        <div
+                            class="w-10 h-10 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center mr-3 shadow-md">
+                            <i class="fas fa-trophy text-white"></i>
+                        </div>
+                        Empresas Mais Ativas
                     </h3>
+                    <p class="text-sm text-gray-500 mt-1 ml-13">Últimos 30 dias</p>
                 </div>
                 <div class="p-6">
-                    @forelse($topCompanies as $company)
-                        <div class="flex justify-between items-center py-3 border-b last:border-0">
-                            <div>
-                                <p class="font-semibold text-gray-800">{{ $company->nome_fantasia }}</p>
-                                <p class="text-sm text-gray-500">{{ $company->razao_social }}</p>
+                    @forelse($topCompanies as $index => $company)
+                        <div
+                            class="flex justify-between items-center py-4 border-b border-gray-50 last:border-0 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 rounded-lg px-3 -mx-3 transition-all duration-300">
+                            <div class="flex items-center space-x-4">
+                                <div
+                                    class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold shadow-md">
+                                    {{ $index + 1 }}
+                                </div>
+                                <div>
+                                    <p class="font-bold text-gray-900">{{ $company->nome_fantasia }}</p>
+                                    <p class="text-sm text-gray-500">{{ $company->razao_social }}</p>
+                                </div>
                             </div>
                             <div class="text-right">
-                                <p class="text-lg font-bold text-purple-600">{{ $company->movements_count }}</p>
-                                <p class="text-xs text-gray-500">movimentações</p>
+                                <p
+                                    class="text-2xl font-black bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
+                                    {{ $company->movements_count }}
+                                </p>
+                                <p class="text-xs text-gray-500 font-semibold">movimentações</p>
                             </div>
                         </div>
                     @empty
-                        <p class="text-gray-500 text-center py-4">Nenhuma movimentação registrada</p>
+                        <div class="text-center py-12">
+                            <div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-chart-line text-gray-400 text-3xl"></i>
+                            </div>
+                            <p class="text-gray-500 font-medium">Nenhuma movimentação registrada</p>
+                        </div>
                     @endforelse
                 </div>
             </div>
 
             <!-- Movement Stats -->
-            <div class="bg-white rounded-xl shadow">
-                <div class="p-6 border-b">
-                    <h3 class="text-lg font-bold text-gray-800">
-                        <i class="fas fa-chart-pie mr-2"></i>
-                        Movimentações (30 dias)
+            <div class="modern-card overflow-hidden">
+                <div class="p-6 border-b border-gray-100 bg-gradient-to-r from-blue-50 to-cyan-50">
+                    <h3 class="text-xl font-black text-gray-900 flex items-center">
+                        <div
+                            class="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-xl flex items-center justify-center mr-3 shadow-md">
+                            <i class="fas fa-chart-pie text-white"></i>
+                        </div>
+                        Movimentações
                     </h3>
+                    <p class="text-sm text-gray-500 mt-1 ml-13">Últimos 30 dias</p>
                 </div>
                 <div class="p-6">
                     @if ($movementsByType->isNotEmpty())
                         <div class="space-y-4">
                             @if ($movementsByType->has('entrada'))
-                                <div class="flex justify-between items-center p-4 bg-green-50 rounded-lg">
-                                    <div>
-                                        <p class="text-sm text-gray-600">Entradas</p>
-                                        <p class="text-2xl font-bold text-green-600">
-                                            {{ $movementsByType['entrada']->count }}</p>
-                                    </div>
-                                    <div class="text-right">
-                                        <p class="text-sm text-gray-600">Valor</p>
-                                        <p class="text-lg font-bold text-green-600">R$
-                                            {{ number_format($movementsByType['entrada']->total_value, 2, ',', '.') }}</p>
+                                <div
+                                    class="modern-card bg-gradient-to-br from-green-500 to-emerald-600 p-6 text-white hover:scale-105 transition-transform duration-300">
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <div class="flex items-center mb-2">
+                                                <div
+                                                    class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center mr-3 backdrop-blur-sm">
+                                                    <i class="fas fa-arrow-down"></i>
+                                                </div>
+                                                <p class="text-white/90 font-semibold">Entradas</p>
+                                            </div>
+                                            <p class="text-4xl font-black">{{ $movementsByType['entrada']->count }}</p>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="text-sm text-white/90 mb-1">Valor Total</p>
+                                            <p class="text-2xl font-black">R$
+                                                {{ number_format($movementsByType['entrada']->total_value, 2, ',', '.') }}
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             @endif
 
                             @if ($movementsByType->has('saida'))
-                                <div class="flex justify-between items-center p-4 bg-red-50 rounded-lg">
-                                    <div>
-                                        <p class="text-sm text-gray-600">Saídas</p>
-                                        <p class="text-2xl font-bold text-red-600">{{ $movementsByType['saida']->count }}
-                                        </p>
-                                    </div>
-                                    <div class="text-right">
-                                        <p class="text-sm text-gray-600">Valor</p>
-                                        <p class="text-lg font-bold text-red-600">R$
-                                            {{ number_format($movementsByType['saida']->total_value, 2, ',', '.') }}</p>
+                                <div
+                                    class="modern-card bg-gradient-to-br from-red-500 to-rose-600 p-6 text-white hover:scale-105 transition-transform duration-300">
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <div class="flex items-center mb-2">
+                                                <div
+                                                    class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center mr-3 backdrop-blur-sm">
+                                                    <i class="fas fa-arrow-up"></i>
+                                                </div>
+                                                <p class="text-white/90 font-semibold">Saídas</p>
+                                            </div>
+                                            <p class="text-4xl font-black">{{ $movementsByType['saida']->count }}</p>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="text-sm text-white/90 mb-1">Valor Total</p>
+                                            <p class="text-2xl font-black">R$
+                                                {{ number_format($movementsByType['saida']->total_value, 2, ',', '.') }}
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             @endif
                         </div>
                     @else
-                        <p class="text-gray-500 text-center py-4">Nenhuma movimentação registrada</p>
+                        <div class="text-center py-12">
+                            <div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-exchange-alt text-gray-400 text-3xl"></i>
+                            </div>
+                            <p class="text-gray-500 font-medium">Nenhuma movimentação registrada</p>
+                        </div>
                     @endif
                 </div>
             </div>

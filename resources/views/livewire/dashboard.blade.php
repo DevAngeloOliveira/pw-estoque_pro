@@ -1,92 +1,145 @@
-<div class="py-12">
+<div class="py-8">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <!-- Cards de Estatísticas -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-            <div class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg shadow-lg p-6 text-white">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-blue-100 text-sm">Total de Produtos</p>
-                        <p class="text-3xl font-bold">{{ $totalProducts }}</p>
+        <!-- Modern Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
+            <div class="stat-card stat-card-blue relative overflow-hidden animate-fadeInUp">
+                <div class="relative z-10">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center backdrop-blur-sm">
+                            <i class="fas fa-boxes text-3xl"></i>
+                        </div>
+                        <span class="px-3 py-1 bg-white/20 rounded-full text-xs font-semibold backdrop-blur-sm">
+                            PRODUTOS
+                        </span>
                     </div>
-                    <div class="bg-blue-400 rounded-full p-4">
-                        <i class="fas fa-boxes text-3xl"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg shadow-lg p-6 text-white">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-purple-100 text-sm">Valor Total em Estoque</p>
-                        <p class="text-2xl font-bold">R$ {{ number_format($totalValue, 2, ',', '.') }}</p>
-                    </div>
-                    <div class="bg-purple-400 rounded-full p-4">
-                        <i class="fas fa-money-bill-wave text-3xl"></i>
+                    <h3 class="text-5xl font-black mb-2">{{ $totalProducts }}</h3>
+                    <p class="text-white/90 font-medium">Total de Produtos</p>
+                    <div class="mt-4 flex items-center text-sm">
+                        <i class="fas fa-cube mr-2"></i>
+                        <span>Cadastrados no sistema</span>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-gradient-to-br from-red-500 to-red-600 rounded-lg shadow-lg p-6 text-white">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-red-100 text-sm">Produtos Estoque Baixo</p>
-                        <p class="text-3xl font-bold">{{ $lowStockProducts }}</p>
+            <div class="stat-card stat-card-purple relative overflow-hidden animate-fadeInUp"
+                style="animation-delay: 0.1s;">
+                <div class="relative z-10">
+                    <div class="flex justify-between items-start mb-6">
+                        <div
+                            class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center backdrop-blur-sm">
+                            <i class="fas fa-money-bill-wave text-3xl"></i>
+                        </div>
+                        <span class="px-3 py-1 bg-white/20 rounded-full text-xs font-semibold backdrop-blur-sm">
+                            ESTOQUE
+                        </span>
                     </div>
-                    <div class="bg-red-400 rounded-full p-4">
-                        <i class="fas fa-exclamation-triangle text-3xl"></i>
+                    <h3 class="text-3xl font-black mb-2">R$ {{ number_format($totalValue, 2, ',', '.') }}</h3>
+                    <p class="text-white/90 font-medium">Valor Total em Estoque</p>
+                    <div class="mt-4 flex items-center text-sm">
+                        <i class="fas fa-warehouse mr-2"></i>
+                        <span>Inventário completo</span>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-gradient-to-br from-green-500 to-green-600 rounded-lg shadow-lg p-6 text-white">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-green-100 text-sm">Ganhos Totais</p>
-                        <p class="text-2xl font-bold">R$ {{ number_format($totalGanhos, 2, ',', '.') }}</p>
+            <div class="stat-card stat-card-red relative overflow-hidden animate-fadeInUp"
+                style="animation-delay: 0.2s;">
+                <div class="relative z-10">
+                    <div class="flex justify-between items-start mb-6">
+                        <div
+                            class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center backdrop-blur-sm">
+                            <i class="fas fa-exclamation-triangle text-3xl"></i>
+                        </div>
+                        <span class="px-3 py-1 bg-white/20 rounded-full text-xs font-semibold backdrop-blur-sm">
+                            ALERTA
+                        </span>
                     </div>
-                    <div class="bg-green-400 rounded-full p-4">
-                        <i class="fas fa-chart-line text-3xl"></i>
+                    <h3 class="text-5xl font-black mb-2">{{ $lowStockProducts }}</h3>
+                    <p class="text-white/90 font-medium">Produtos Estoque Baixo</p>
+                    <div class="mt-4 flex items-center text-sm">
+                        <i class="fas fa-bell mr-2"></i>
+                        <span>Requer atenção</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card stat-card-green relative overflow-hidden animate-fadeInUp"
+                style="animation-delay: 0.3s;">
+                <div class="relative z-10">
+                    <div class="flex justify-between items-start mb-6">
+                        <div
+                            class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center backdrop-blur-sm">
+                            <i class="fas fa-chart-line text-3xl"></i>
+                        </div>
+                        <span class="px-3 py-1 bg-white/20 rounded-full text-xs font-semibold backdrop-blur-sm">
+                            LUCRO
+                        </span>
+                    </div>
+                    <h3 class="text-3xl font-black mb-2">R$ {{ number_format($totalGanhos, 2, ',', '.') }}</h3>
+                    <p class="text-white/90 font-medium">Ganhos Totais</p>
+                    <div class="mt-4 flex items-center text-sm">
+                        <i class="fas fa-trending-up mr-2"></i>
+                        <span>Resultado acumulado</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Resumo Financeiro -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <div class="flex items-center mb-4">
-                    <div class="bg-blue-100 rounded-full p-3 mr-3">
-                        <i class="fas fa-arrow-down text-blue-600 text-xl"></i>
-                    </div>
+        <!-- Modern Financial Summary -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+            <div
+                class="modern-card p-6 bg-gradient-to-br from-white to-blue-50 hover:scale-105 transition-transform duration-300">
+                <div class="flex items-center justify-between">
                     <div>
-                        <p class="text-gray-500 text-sm">Total Entradas</p>
-                        <p class="text-xl font-bold text-blue-600">R$ {{ number_format($totalEntradas, 2, ',', '.') }}
+                        <p class="text-gray-500 text-sm font-medium mb-1">Total Entradas</p>
+                        <p class="text-3xl font-black text-blue-600">R$ {{ number_format($totalEntradas, 2, ',', '.') }}
                         </p>
+                        <div class="mt-3 flex items-center text-xs text-blue-600 font-semibold">
+                            <div class="w-2 h-2 bg-blue-600 rounded-full mr-2 animate-pulse"></div>
+                            Movimentações positivas
+                        </div>
+                    </div>
+                    <div
+                        class="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center shadow-lg">
+                        <i class="fas fa-arrow-down text-white text-2xl"></i>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <div class="flex items-center mb-4">
-                    <div class="bg-red-100 rounded-full p-3 mr-3">
-                        <i class="fas fa-arrow-up text-red-600 text-xl"></i>
-                    </div>
+            <div
+                class="modern-card p-6 bg-gradient-to-br from-white to-red-50 hover:scale-105 transition-transform duration-300">
+                <div class="flex items-center justify-between">
                     <div>
-                        <p class="text-gray-500 text-sm">Total Saídas</p>
-                        <p class="text-xl font-bold text-red-600">R$ {{ number_format($totalSaidas, 2, ',', '.') }}</p>
+                        <p class="text-gray-500 text-sm font-medium mb-1">Total Saídas</p>
+                        <p class="text-3xl font-black text-red-600">R$ {{ number_format($totalSaidas, 2, ',', '.') }}
+                        </p>
+                        <div class="mt-3 flex items-center text-xs text-red-600 font-semibold">
+                            <div class="w-2 h-2 bg-red-600 rounded-full mr-2 animate-pulse"></div>
+                            Movimentações negativas
+                        </div>
+                    </div>
+                    <div
+                        class="w-16 h-16 bg-gradient-to-br from-red-500 to-rose-600 rounded-2xl flex items-center justify-center shadow-lg">
+                        <i class="fas fa-arrow-up text-white text-2xl"></i>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <div class="flex items-center mb-4">
-                    <div class="bg-green-100 rounded-full p-3 mr-3">
-                        <i class="fas fa-chart-bar text-green-600 text-xl"></i>
-                    </div>
+            <div
+                class="modern-card p-6 bg-gradient-to-br from-white to-green-50 hover:scale-105 transition-transform duration-300">
+                <div class="flex items-center justify-between">
                     <div>
-                        <p class="text-gray-500 text-sm">Lucro Bruto</p>
-                        <p class="text-xl font-bold text-green-600">R$ {{ number_format($totalGanhos, 2, ',', '.') }}
+                        <p class="text-gray-500 text-sm font-medium mb-1">Lucro Bruto</p>
+                        <p class="text-3xl font-black text-green-600">R$ {{ number_format($totalGanhos, 2, ',', '.') }}
                         </p>
+                        <div class="mt-3 flex items-center text-xs text-green-600 font-semibold">
+                            <div class="w-2 h-2 bg-green-600 rounded-full mr-2 animate-pulse"></div>
+                            Resultado acumulado
+                        </div>
+                    </div>
+                    <div
+                        class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg">
+                        <i class="fas fa-chart-bar text-white text-2xl"></i>
                     </div>
                 </div>
             </div>
