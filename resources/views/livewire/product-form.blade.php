@@ -1,43 +1,46 @@
-<div class="py-12">
+<div class="py-12 dark:bg-gray-900">
     <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
-        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-            <div class="p-6 bg-white border-b border-gray-200">
+        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="p-6 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
                 <div class="flex justify-between items-center mb-6">
-                    <h2 class="text-2xl font-bold text-gray-800">
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white">
                         {{ $productId ? 'Editar Produto' : 'Novo Produto' }}
                     </h2>
-                    <a href="{{ route('products.index') }}" class="text-gray-600 hover:text-gray-900">
+                    <a href="{{ route('products.index') }}"
+                        class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
                         ← Voltar
                     </a>
                 </div>
 
                 <form wire:submit.prevent="save">
                     <div class="mb-4">
-                        <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
+                        <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                             Nome do Produto *
                         </label>
                         <input wire:model="name" type="text" id="name"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 @error('name') border-red-500 @enderror">
+                            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 dark:bg-gray-700 dark:text-white @error('name') border-red-500 @enderror">
                         @error('name')
                             <span class="text-red-500 text-sm">{{ $message }}</span>
                         @enderror
                     </div>
 
                     <div class="mb-4">
-                        <label for="description" class="block text-sm font-medium text-gray-700 mb-2">
+                        <label for="description"
+                            class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                             Descrição
                         </label>
                         <textarea wire:model="description" id="description" rows="3"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"></textarea>
+                            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 dark:bg-gray-700 dark:text-white"></textarea>
                     </div>
 
                     <div class="grid grid-cols-2 gap-4 mb-4">
                         <div>
-                            <label for="category_id" class="block text-sm font-medium text-gray-700 mb-2">
+                            <label for="category_id"
+                                class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                 Categoria
                             </label>
                             <select wire:model="category_id" id="category_id"
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                                class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 dark:bg-gray-700 dark:text-white">
                                 <option value="">Selecione uma categoria</option>
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}">
@@ -51,11 +54,12 @@
                         </div>
 
                         <div>
-                            <label for="supplier_id" class="block text-sm font-medium text-gray-700 mb-2">
+                            <label for="supplier_id"
+                                class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                 Fornecedor
                             </label>
                             <select wire:model="supplier_id" id="supplier_id"
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                                class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 dark:bg-gray-700 dark:text-white">
                                 <option value="">Selecione um fornecedor</option>
                                 @foreach ($suppliers as $supplier)
                                     <option value="{{ $supplier->id }}">

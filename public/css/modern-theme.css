@@ -36,9 +36,19 @@ body {
     border: 1px solid #e2e8f0;
 }
 
+.dark .modern-card {
+    background: #1f2937;
+    border-color: #374151;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+}
+
 .modern-card:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.dark .modern-card:hover {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
 }
 
 /* Stats cards com gradiente */
@@ -97,9 +107,17 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.dark .btn-modern {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
 .btn-modern:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.dark .btn-modern:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
 }
 
 /* Sidebar moderna */
@@ -229,6 +247,11 @@ body {
     border-bottom: 2px solid #e2e8f0;
 }
 
+.dark .modern-table thead {
+    background: #1f2937;
+    border-bottom-color: #374151;
+}
+
 .modern-table th {
     padding: 1rem 1.5rem;
     text-transform: uppercase;
@@ -238,9 +261,19 @@ body {
     color: #64748b;
 }
 
+.dark .modern-table th {
+    color: #9ca3af;
+}
+
 .modern-table td {
     padding: 1.25rem 1.5rem;
     border-bottom: 1px solid #f1f5f9;
+    color: #1e293b;
+}
+
+.dark .modern-table td {
+    border-bottom-color: #374151;
+    color: #f3f4f6;
 }
 
 .modern-table tbody tr {
@@ -250,6 +283,10 @@ body {
 .modern-table tbody tr:hover {
     background: #f8fafc;
     transform: scale(1.01);
+}
+
+.dark .modern-table tbody tr:hover {
+    background: #374151;
 }
 
 /* Badges modernos */
@@ -270,12 +307,29 @@ body {
     border-radius: 12px;
     transition: all 0.3s ease;
     font-size: 0.9375rem;
+    background: white;
+    color: #1e293b;
+}
+
+.dark .input-modern {
+    background: #374151;
+    border-color: #4b5563;
+    color: #f3f4f6;
 }
 
 .input-modern:focus {
     outline: none;
     border-color: var(--primary);
     box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+}
+
+.dark .input-modern:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+}
+
+.dark .input-modern::placeholder {
+    color: #9ca3af;
 }
 
 /* Sidebar Toggle Button */

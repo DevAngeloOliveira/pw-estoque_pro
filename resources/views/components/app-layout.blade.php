@@ -370,7 +370,8 @@
             </header>
 
             <!-- Page Content -->
-            <main class="flex-1 overflow-y-auto">
+            <main
+                class="flex-1 overflow-y-auto bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
                 {{ $slot }}
             </main>
         </div>

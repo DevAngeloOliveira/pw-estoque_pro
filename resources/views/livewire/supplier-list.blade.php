@@ -1,23 +1,23 @@
 <div>
-    <div class="py-12">
+    <div class="py-12 dark:bg-gray-900">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
                     <!-- Header com Toggle de Modo -->
                     <div class="flex justify-between items-center mb-6">
                         <div>
-                            <h2 class="text-2xl font-bold text-gray-800">
+                            <h2 class="text-2xl font-bold text-gray-800 dark:text-white">
                                 <i class="fas fa-truck text-blue-500"></i> Fornecedores
                             </h2>
-                            <p class="text-sm text-gray-600 mt-1">
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
                                 @if ($useGlobalSuppliers)
                                     <span
-                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300">
                                         <i class="fas fa-globe mr-1"></i> Usando fornecedores do sistema
                                     </span>
                                 @else
                                     <span
-                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">
                                         <i class="fas fa-building mr-1"></i> Usando fornecedores próprios
                                     </span>
                                 @endif
@@ -41,19 +41,19 @@
 
                     <!-- Info Box -->
                     <div
-                        class="mb-4 p-4 rounded-lg {{ $useGlobalSuppliers ? 'bg-purple-50 border border-purple-200' : 'bg-blue-50 border border-blue-200' }}">
+                        class="mb-4 p-4 rounded-lg {{ $useGlobalSuppliers ? 'bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800' : 'bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800' }}">
                         <div class="flex">
                             <div class="flex-shrink-0">
                                 <i
-                                    class="fas fa-info-circle text-lg {{ $useGlobalSuppliers ? 'text-purple-600' : 'text-blue-600' }}"></i>
+                                    class="fas fa-info-circle text-lg {{ $useGlobalSuppliers ? 'text-purple-600 dark:text-purple-400' : 'text-blue-600 dark:text-blue-400' }}"></i>
                             </div>
                             <div class="ml-3">
                                 <h3
-                                    class="text-sm font-medium {{ $useGlobalSuppliers ? 'text-purple-800' : 'text-blue-800' }}">
+                                    class="text-sm font-medium {{ $useGlobalSuppliers ? 'text-purple-800 dark:text-purple-300' : 'text-blue-800 dark:text-blue-300' }}">
                                     {{ $useGlobalSuppliers ? 'Modo: Fornecedores do Sistema' : 'Modo: Fornecedores Próprios' }}
                                 </h3>
                                 <div
-                                    class="mt-2 text-sm {{ $useGlobalSuppliers ? 'text-purple-700' : 'text-blue-700' }}">
+                                    class="mt-2 text-sm {{ $useGlobalSuppliers ? 'text-purple-700 dark:text-purple-400' : 'text-blue-700 dark:text-blue-400' }}">
                                     @if ($useGlobalSuppliers)
                                         <p>Você está utilizando a base de fornecedores pré-cadastrados do sistema. Não é
                                             possível editar ou excluir estes fornecedores.</p>
@@ -70,13 +70,13 @@
                     <div class="mb-4">
                         <input wire:model.debounce.300ms="search" type="text"
                             placeholder="Buscar por nome, razão social ou CNPJ..."
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400">
                     </div>
 
                     <!-- Suppliers Table -->
                     <div class="overflow-x-auto">
-                        <table class="min-w-full divide-y divide-gray-200">
-                            <thead class="bg-gray-50">
+                        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                            <thead class="bg-gray-50 dark:bg-gray-700">
                                 <tr>
                                     <th
                                         class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -222,16 +222,18 @@
     @if ($showModal)
         <div class="fixed z-10 inset-0 overflow-y-auto" style="display: block;">
             <div class="flex items-center justify-center min-h-screen px-4">
-                <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" wire:click="closeModal"></div>
+                <div class="fixed inset-0 bg-gray-500 dark:bg-gray-900 bg-opacity-75 dark:bg-opacity-80 transition-opacity"
+                    wire:click="closeModal"></div>
 
                 <div
-                    class="relative bg-white rounded-lg overflow-hidden shadow-xl transform transition-all max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-                    <div class="bg-white px-6 pt-5 pb-4">
+                    class="relative bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-xl transform transition-all max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+                    <div class="bg-white dark:bg-gray-800 px-6 pt-5 pb-4">
                         <div class="flex justify-between items-center mb-4">
-                            <h3 class="text-lg font-medium text-gray-900">
+                            <h3 class="text-lg font-medium text-gray-900 dark:text-white">
                                 {{ $supplierId ? 'Editar Fornecedor' : 'Novo Fornecedor' }}
                             </h3>
-                            <button wire:click="closeModal" class="text-gray-400 hover:text-gray-500">
+                            <button wire:click="closeModal"
+                                class="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300">
                                 <i class="fas fa-times"></i>
                             </button>
                         </div>
@@ -239,43 +241,48 @@
                         <form wire:submit.prevent="save">
                             <!-- Dados Principais -->
                             <div class="mb-6">
-                                <h4 class="text-md font-semibold text-gray-700 mb-3 border-b pb-2">
+                                <h4
+                                    class="text-md font-semibold text-gray-700 dark:text-gray-300 mb-3 border-b dark:border-gray-600 pb-2">
                                     <i class="fas fa-building text-blue-500 mr-2"></i>Dados Principais
                                 </h4>
                                 <div class="grid grid-cols-2 gap-4">
                                     <div class="col-span-2">
-                                        <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
+                                        <label for="name"
+                                            class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                             Nome Fantasia *
                                         </label>
                                         <input wire:model="name" type="text" id="name"
-                                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 @error('name') border-red-500 @enderror">
+                                            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 dark:bg-gray-700 dark:text-white @error('name') border-red-500 @enderror">
                                         @error('name')
                                             <span class="text-red-500 text-sm">{{ $message }}</span>
                                         @enderror
                                     </div>
 
                                     <div class="col-span-2">
-                                        <label for="legal_name" class="block text-sm font-medium text-gray-700 mb-2">
+                                        <label for="legal_name"
+                                            class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                             Razão Social
                                         </label>
                                         <input wire:model="legal_name" type="text" id="legal_name"
-                                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                                            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 dark:bg-gray-700 dark:text-white">
                                     </div>
 
                                     <div>
-                                        <label for="cnpj" class="block text-sm font-medium text-gray-700 mb-2">
+                                        <label for="cnpj"
+                                            class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                             CNPJ
                                         </label>
                                         <input wire:model="cnpj" type="text" id="cnpj"
                                             placeholder="00.000.000/0000-00" maxlength="18"
-                                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 @error('cnpj') border-red-500 @enderror">
+                                            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 @error('cnpj') border-red-500 @enderror">
                                         @error('cnpj')
                                             <span class="text-red-500 text-sm">{{ $message }}</span>
                                         @enderror
                                     </div>
 
                                     <div>
-                                        <label for="website" class="block text-sm font-medium text-gray-700 mb-2">
+                                        <label for="website"
+                                            class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                             Website
                                         </label>
                                         <input wire:model="website" type="url" id="website"

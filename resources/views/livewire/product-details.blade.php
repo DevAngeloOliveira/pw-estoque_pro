@@ -1,6 +1,6 @@
-<div class="space-y-6">
+<div class="space-y-6 dark:bg-gray-900">
     <!-- Header com Informações Principais -->
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
         <div class="bg-gradient-to-r from-blue-600 to-purple-600 p-6 text-white">
             <div class="flex items-start justify-between">
                 <div class="flex-1">
@@ -28,16 +28,17 @@
         <div class="p-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
                 <!-- Preço -->
-                <div class="text-center p-4 bg-green-50 rounded-lg">
-                    <p class="text-sm text-gray-600 mb-1">Preço Unitário</p>
-                    <p class="text-3xl font-bold text-green-600">R$ {{ number_format($product->price, 2, ',', '.') }}
+                <div class="text-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-1">Preço Unitário</p>
+                    <p class="text-3xl font-bold text-green-600 dark:text-green-400">R$
+                        {{ number_format($product->price, 2, ',', '.') }}
                     </p>
                 </div>
 
                 <!-- Quantidade -->
-                <div class="text-center p-4 bg-blue-50 rounded-lg">
-                    <p class="text-sm text-gray-600 mb-1">Quantidade</p>
-                    <p class="text-3xl font-bold text-blue-600">{{ $product->quantity }}</p>
+                <div class="text-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-1">Quantidade</p>
+                    <p class="text-3xl font-bold text-blue-600 dark:text-blue-400">{{ $product->quantity }}</p>
                     <p class="text-xs text-gray-500 mt-1">unidades</p>
                 </div>
 

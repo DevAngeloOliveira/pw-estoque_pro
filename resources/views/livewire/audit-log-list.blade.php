@@ -1,4 +1,4 @@
-<div class="py-12">
+<div class="py-12 dark:bg-gray-900">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
         <!-- Cards de Resumo -->
@@ -40,10 +40,10 @@
             </div>
         </div>
 
-        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-            <div class="p-6 bg-white border-b border-gray-200">
+        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="p-6 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
                 <div class="flex justify-between items-center mb-6">
-                    <h2 class="text-2xl font-bold text-gray-800">
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white">
                         <i class="fas fa-history mr-2"></i>Auditoria do Sistema
                     </h2>
                 </div>
@@ -51,10 +51,10 @@
                 <!-- Filtros -->
                 <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-4">
                     <input wire:model="search" type="text" placeholder="Buscar por ID do registro..."
-                        class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                        class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400">
 
                     <select wire:model="actionFilter"
-                        class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                        class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 dark:bg-gray-700 dark:text-white">
                         <option value="">Todas as Ações</option>
                         <option value="created">Criado</option>
                         <option value="updated">Atualizado</option>
@@ -62,17 +62,17 @@
                     </select>
 
                     <select wire:model="modelFilter"
-                        class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                        class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 dark:bg-gray-700 dark:text-white">
                         <option value="">Todos os Módulos</option>
                         <option value="App\Models\Product">Produtos</option>
                         <option value="App\Models\ProductMovement">Movimentações</option>
                     </select>
 
                     <input wire:model="dateFrom" type="date"
-                        class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                        class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 dark:bg-gray-700 dark:text-white">
 
                     <input wire:model="dateTo" type="date"
-                        class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                        class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 dark:bg-gray-700 dark:text-white">
                 </div>
 
                 <div class="mb-4 flex justify-between items-center">

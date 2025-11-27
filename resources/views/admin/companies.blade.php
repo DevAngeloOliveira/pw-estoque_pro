@@ -36,8 +36,8 @@
         <!-- Modern Header -->
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
             <div>
-                <h1 class="text-4xl font-black text-gray-900 tracking-tight">Empresas Cadastradas</h1>
-                <p class="text-gray-500 mt-2 flex items-center">
+                <h1 class="text-4xl font-black text-gray-900 dark:text-white tracking-tight">Empresas Cadastradas</h1>
+                <p class="text-gray-500 dark:text-gray-400 mt-2 flex items-center">
                     <i class="fas fa-building mr-2 text-indigo-600"></i>
                     Gerenciar todas as empresas do sistema
                 </p>

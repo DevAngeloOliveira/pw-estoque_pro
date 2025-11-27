@@ -7,17 +7,18 @@
         <!-- Modern Header -->
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
             <div>
-                <h1 class="text-4xl font-bold text-gray-900 tracking-tight">Dashboard Geral</h1>
-                <p class="text-gray-500 mt-2 flex items-center">
+                <h1 class="text-4xl font-bold text-gray-900 dark:text-white tracking-tight">Dashboard Geral</h1>
+                <p class="text-gray-500 dark:text-gray-400 mt-2 flex items-center">
                     <i class="fas fa-chart-bar mr-2 text-indigo-600"></i>
                     Visão consolidada do sistema
                 </p>
             </div>
-            <div class="flex items-center space-x-3 bg-white px-5 py-3 rounded-2xl shadow-sm border border-gray-100">
+            <div
+                class="flex items-center space-x-3 bg-white dark:bg-gray-800 px-5 py-3 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
                 <i class="fas fa-calendar text-indigo-600"></i>
                 <div class="text-sm">
-                    <p class="font-semibold text-gray-900">{{ now()->format('d/m/Y') }}</p>
-                    <p class="text-gray-500">{{ now()->format('H:i') }}</p>
+                    <p class="font-semibold text-gray-900 dark:text-white">{{ now()->format('d/m/Y') }}</p>
+                    <p class="text-gray-500 dark:text-gray-400">{{ now()->format('H:i') }}</p>
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-<div class="py-8">
+<div class="py-8 dark:bg-gray-900">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <!-- Modern Stats Cards -->
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
@@ -88,14 +88,15 @@
         <!-- Modern Financial Summary -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
             <div
-                class="modern-card p-6 bg-gradient-to-br from-white to-blue-50 hover:scale-105 transition-transform duration-300">
+                class="modern-card p-6 bg-gradient-to-br from-white to-blue-50 dark:from-gray-800 dark:to-blue-900/20 hover:scale-105 transition-transform duration-300">
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="text-gray-500 text-sm font-medium mb-1">Total Entradas</p>
-                        <p class="text-3xl font-black text-blue-600">R$ {{ number_format($totalEntradas, 2, ',', '.') }}
+                        <p class="text-gray-500 dark:text-gray-400 text-sm font-medium mb-1">Total Entradas</p>
+                        <p class="text-3xl font-black text-blue-600 dark:text-blue-400">R$
+                            {{ number_format($totalEntradas, 2, ',', '.') }}
                         </p>
-                        <div class="mt-3 flex items-center text-xs text-blue-600 font-semibold">
-                            <div class="w-2 h-2 bg-blue-600 rounded-full mr-2 animate-pulse"></div>
+                        <div class="mt-3 flex items-center text-xs text-blue-600 dark:text-blue-400 font-semibold">
+                            <div class="w-2 h-2 bg-blue-600 dark:bg-blue-400 rounded-full mr-2 animate-pulse"></div>
                             Movimentações positivas
                         </div>
                     </div>
@@ -107,14 +108,15 @@
             </div>
 
             <div
-                class="modern-card p-6 bg-gradient-to-br from-white to-red-50 hover:scale-105 transition-transform duration-300">
+                class="modern-card p-6 bg-gradient-to-br from-white to-red-50 dark:from-gray-800 dark:to-red-900/20 hover:scale-105 transition-transform duration-300">
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="text-gray-500 text-sm font-medium mb-1">Total Saídas</p>
-                        <p class="text-3xl font-black text-red-600">R$ {{ number_format($totalSaidas, 2, ',', '.') }}
+                        <p class="text-gray-500 dark:text-gray-400 text-sm font-medium mb-1">Total Saídas</p>
+                        <p class="text-3xl font-black text-red-600 dark:text-red-400">R$
+                            {{ number_format($totalSaidas, 2, ',', '.') }}
                         </p>
-                        <div class="mt-3 flex items-center text-xs text-red-600 font-semibold">
-                            <div class="w-2 h-2 bg-red-600 rounded-full mr-2 animate-pulse"></div>
+                        <div class="mt-3 flex items-center text-xs text-red-600 dark:text-red-400 font-semibold">
+                            <div class="w-2 h-2 bg-red-600 dark:bg-red-400 rounded-full mr-2 animate-pulse"></div>
                             Movimentações negativas
                         </div>
                     </div>
@@ -126,14 +128,15 @@
             </div>
 
             <div
-                class="modern-card p-6 bg-gradient-to-br from-white to-green-50 hover:scale-105 transition-transform duration-300">
+                class="modern-card p-6 bg-gradient-to-br from-white to-green-50 dark:from-gray-800 dark:to-green-900/20 hover:scale-105 transition-transform duration-300">
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="text-gray-500 text-sm font-medium mb-1">Lucro Bruto</p>
-                        <p class="text-3xl font-black text-green-600">R$ {{ number_format($totalGanhos, 2, ',', '.') }}
+                        <p class="text-gray-500 dark:text-gray-400 text-sm font-medium mb-1">Lucro Bruto</p>
+                        <p class="text-3xl font-black text-green-600 dark:text-green-400">R$
+                            {{ number_format($totalGanhos, 2, ',', '.') }}
                         </p>
-                        <div class="mt-3 flex items-center text-xs text-green-600 font-semibold">
-                            <div class="w-2 h-2 bg-green-600 rounded-full mr-2 animate-pulse"></div>
+                        <div class="mt-3 flex items-center text-xs text-green-600 dark:text-green-400 font-semibold">
+                            <div class="w-2 h-2 bg-green-600 dark:bg-green-400 rounded-full mr-2 animate-pulse"></div>
                             Resultado acumulado
                         </div>
                     </div>
@@ -148,10 +151,10 @@
         <!-- Gráficos -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
             <!-- Gráfico de Movimentações -->
-            <div class="bg-white rounded-lg shadow-lg p-6">
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
                 <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-lg font-bold text-gray-800 flex items-center">
-                        <i class="fas fa-chart-area text-blue-500 mr-2"></i>
+                    <h3 class="text-lg font-bold text-gray-800 dark:text-white flex items-center">
+                        <i class="fas fa-chart-area text-blue-500 dark:text-blue-400 mr-2"></i>
                         Movimentações (Últimos 7 dias)
                     </h3>
                     <a href="{{ route('reports.dashboard.pdf') }}" target="_blank"
@@ -166,9 +169,9 @@
             </div>
 
             <!-- Gráfico de Tipos de Movimento -->
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
-                    <i class="fas fa-chart-pie text-purple-500 mr-2"></i>
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+                <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-4 flex items-center">
+                    <i class="fas fa-chart-pie text-purple-500 dark:text-purple-400 mr-2"></i>
                     Entradas vs Saídas
                 </h3>
                 <div style="height: 300px; position: relative;">
@@ -179,23 +182,25 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
             <!-- Top Produtos Vendidos -->
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
-                    <i class="fas fa-fire text-orange-500 mr-2"></i>
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+                <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-4 flex items-center">
+                    <i class="fas fa-fire text-orange-500 dark:text-orange-400 mr-2"></i>
                     Top 5 Produtos Mais Vendidos (30 dias)
                 </h3>
                 <div class="space-y-3">
                     @forelse($topProducts as $index => $movement)
                         <div
-                            class="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                            class="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition">
                             <div class="flex items-center">
                                 <div
                                     class="bg-gradient-to-br from-orange-400 to-orange-500 text-white rounded-full h-8 w-8 flex items-center justify-center font-bold mr-3">
                                     {{ $index + 1 }}
                                 </div>
                                 <div>
-                                    <p class="font-semibold text-gray-800">{{ $movement->product->name }}</p>
-                                    <p class="text-xs text-gray-500">{{ $movement->total_quantity }} unidades</p>
+                                    <p class="font-semibold text-gray-800 dark:text-white">
+                                        {{ $movement->product->name }}</p>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400">{{ $movement->total_quantity }}
+                                        unidades</p>
                                 </div>
                             </div>
                             <p class="font-bold text-green-600">R$
@@ -208,17 +213,18 @@
             </div>
 
             <!-- Alertas de Estoque Baixo -->
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
-                    <i class="fas fa-exclamation-circle text-red-500 mr-2"></i>
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+                <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-4 flex items-center">
+                    <i class="fas fa-exclamation-circle text-red-500 dark:text-red-400 mr-2"></i>
                     Alertas de Estoque Baixo
                 </h3>
                 <div class="space-y-3">
                     @forelse($lowStockList as $product)
-                        <div class="flex items-center justify-between p-3 bg-red-50 rounded-lg border border-red-200">
+                        <div
+                            class="flex items-center justify-between p-3 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800">
                             <div>
-                                <p class="font-semibold text-gray-800">{{ $product->name }}</p>
-                                <p class="text-xs text-gray-500">SKU: {{ $product->sku }}</p>
+                                <p class="font-semibold text-gray-800 dark:text-white">{{ $product->name }}</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">SKU: {{ $product->sku }}</p>
                             </div>
                             <div class="text-right">
                                 <span class="px-3 py-1 bg-red-500 text-white text-sm font-bold rounded-full">
@@ -228,14 +234,14 @@
                         </div>
                     @empty
                         <div class="text-center py-4">
-                            <i class="fas fa-check-circle text-green-500 text-3xl mb-2"></i>
-                            <p class="text-gray-500">Todos os produtos com estoque adequado</p>
+                            <i class="fas fa-check-circle text-green-500 dark:text-green-400 text-3xl mb-2"></i>
+                            <p class="text-gray-500 dark:text-gray-400">Todos os produtos com estoque adequado</p>
                         </div>
                     @endforelse
                 </div>
                 @if ($lowStockList->count() > 0)
                     <a href="{{ route('products.index') }}"
-                        class="mt-4 block text-center text-blue-600 hover:text-blue-800 font-semibold">
+                        class="mt-4 block text-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-semibold">
                         Ver todos os produtos →
                     </a>
                 @endif

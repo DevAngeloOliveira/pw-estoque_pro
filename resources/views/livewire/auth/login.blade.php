@@ -16,10 +16,10 @@
     </div>
 
     <!-- Modern Form -->
-    <div class="p-8">
+    <div class="p-8 dark:bg-gray-800">
         <div class="text-center mb-8">
-            <h2 class="text-3xl font-black text-gray-900">Bem-vindo!</h2>
-            <p class="text-gray-500 mt-2">Faça login para continuar</p>
+            <h2 class="text-3xl font-black text-gray-900 dark:text-white">Bem-vindo!</h2>
+            <p class="text-gray-500 dark:text-gray-400 mt-2">Faça login para continuar</p>
         </div>
 
         @if (session()->has('message'))
@@ -34,7 +34,7 @@
 
         <form wire:submit.prevent="login" class="space-y-6">
             <div>
-                <label for="cnpj" class="block text-sm font-bold text-gray-700 mb-2">
+                <label for="cnpj" class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
                     CNPJ da Empresa
                 </label>
                 <div class="relative">
@@ -55,7 +55,7 @@
             </div>
 
             <div>
-                <label for="password" class="block text-sm font-bold text-gray-700 mb-2">
+                <label for="password" class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
                     Senha
                 </label>
                 <div class="relative">
@@ -75,9 +75,10 @@
             </div>
 
             <div class="flex items-center">
-                <input wire:model="remember" type="checkbox" id="remember"
-                    class="w-5 h-5 text-indigo-600 border-2 border-gray-300 rounded-lg focus:ring-4 focus:ring-indigo-200">
-                <label for="remember" class="ml-3 text-sm font-semibold text-gray-700">Lembrar-me</label>
+                <input wire:model.defer="remember" type="checkbox" id="remember"
+                    class="w-5 h-5 text-indigo-600 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:ring-4 focus:ring-indigo-200 dark:bg-gray-700">
+                <label for="remember"
+                    class="ml-3 text-sm font-semibold text-gray-700 dark:text-gray-300">Lembrar-me</label>
             </div>
 
             <button type="submit"

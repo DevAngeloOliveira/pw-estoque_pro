@@ -1,14 +1,16 @@
-<div class="py-12">
+<div class="py-12 dark:bg-gray-900">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         @if (isset($noCompanySelected) && $noCompanySelected)
-            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-lg shadow-lg">
+            <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-400 p-6 rounded-lg shadow-lg">
                 <div class="flex">
                     <div class="flex-shrink-0">
                         <i class="fas fa-exclamation-triangle text-yellow-400 text-2xl"></i>
                     </div>
                     <div class="ml-4">
-                        <h3 class="text-lg font-semibold text-yellow-800">Nenhuma empresa selecionada</h3>
-                        <p class="mt-2 text-yellow-700">Para ver as movimentações, você precisa selecionar uma empresa
+                        <h3 class="text-lg font-semibold text-yellow-800 dark:text-yellow-300">Nenhuma empresa
+                            selecionada</h3>
+                        <p class="mt-2 text-yellow-700 dark:text-yellow-400">Para ver as movimentações, você precisa
+                            selecionar uma empresa
                             primeiro.</p>
                         <a href="{{ route('dashboard') }}"
                             class="mt-4 inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded">
@@ -19,7 +21,8 @@
             </div>
         @else
             @if (session()->has('message'))
-                <div class="mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
+                <div
+                    class="mb-4 bg-green-100 dark:bg-green-900/30 border border-green-400 dark:border-green-700 text-green-700 dark:text-green-300 px-4 py-3 rounded">
                     {{ session('message') }}
                 </div>
             @endif
@@ -63,10 +66,10 @@
                 </div>
             </div>
 
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
                     <div class="flex justify-between items-center mb-6">
-                        <h2 class="text-2xl font-bold text-gray-800">
+                        <h2 class="text-2xl font-bold text-gray-800 dark:text-white">
                             <i class="fas fa-list mr-2"></i>Histórico de Movimentações
                         </h2>
                         <div class="flex gap-2">
@@ -94,20 +97,20 @@
                     <!-- Filtros -->
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
                         <input wire:model="search" type="text" placeholder="Buscar produto..."
-                            class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                            class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400">
 
                         <select wire:model="filterType"
-                            class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                            class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 dark:bg-gray-700 dark:text-white">
                             <option value="">Todos os tipos</option>
                             <option value="entrada">Entradas</option>
                             <option value="saida">Saídas</option>
                         </select>
 
                         <input wire:model="dateFrom" type="date" placeholder="Data inicial"
-                            class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                            class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 dark:bg-gray-700 dark:text-white">
 
                         <input wire:model="dateTo" type="date" placeholder="Data final"
-                            class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                            class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 dark:bg-gray-700 dark:text-white">
                     </div>
 
                     <button wire:click="clearFilters"
@@ -116,8 +119,9 @@
                     </button>
 
                     <div class="overflow-x-auto">
-                        <table id="movementsTable" class="min-w-full divide-y divide-gray-200 display stripe hover">
-                            <thead class="bg-gray-50">
+                        <table id="movementsTable"
+                            class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 display stripe hover">
+                            <thead class="bg-gray-50 dark:bg-gray-700">
                                 <tr>
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Data
                                     </th>
