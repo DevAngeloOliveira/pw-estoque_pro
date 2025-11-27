@@ -97,7 +97,7 @@
                                 <i class="fas fa-lock text-white"></i>
                             </div>
                             <input type="password" id="password" name="password" class="input-modern w-full pl-20"
-                                placeholder="••••••••" required>
+                                placeholder="••••••••" required autocomplete="current-password">
                         </div>
                     </div>
 

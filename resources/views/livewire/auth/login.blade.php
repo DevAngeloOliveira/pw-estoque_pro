@@ -42,9 +42,10 @@
                         class="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center">
                         <i class="fas fa-building text-white"></i>
                     </div>
-                    <input wire:model="cnpj" type="text" id="cnpj" maxlength="18"
+                    <input wire:model.defer="cnpj" type="text" id="cnpj" maxlength="18"
                         placeholder="00.000.000/0000-00"
-                        class="input-modern w-full pl-20 @error('cnpj') border-red-500 @enderror">
+                        class="input-modern w-full pl-20 @error('cnpj') border-red-500 @enderror"
+                        autocomplete="username">
                 </div>
                 @error('cnpj')
                     <div class="mt-2 text-red-600 text-sm font-semibold flex items-center">
@@ -62,8 +63,9 @@
                         class="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center">
                         <i class="fas fa-lock text-white"></i>
                     </div>
-                    <input wire:model="password" type="password" id="password" placeholder="••••••••"
-                        class="input-modern w-full pl-20 @error('password') border-red-500 @enderror">
+                    <input wire:model.defer="password" type="password" id="password" placeholder="••••••••"
+                        class="input-modern w-full pl-20 @error('password') border-red-500 @enderror"
+                        autocomplete="current-password">
                 </div>
                 @error('password')
                     <div class="mt-2 text-red-600 text-sm font-semibold flex items-center">
