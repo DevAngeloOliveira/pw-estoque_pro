@@ -973,17 +973,6 @@ Para dúvidas, sugestões ou reportar problemas:
 
 ---
 
-## 🙏 Agradecimentos
-
-- Laravel Framework pela excelente documentação
-- Livewire pela simplicidade e poder
-- Tailwind CSS pelo design system
-- Chart.js pelos gráficos interativos
-- Font Awesome pelos ícones
-- Comunidade PHP/Laravel pelo suporte
-
----
-
 <p align="center">
   Feito com ❤️ e ☕ por <strong>Gabriel Ângelo</strong>
 </p>
