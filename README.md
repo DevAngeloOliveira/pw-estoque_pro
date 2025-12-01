@@ -9,134 +9,250 @@
   <img src="https://img.shields.io/badge/TailwindCSS-3.x-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind">
 </p>
 
+<p align="center">
+  <strong>Sistema moderno de gerenciamento de estoque multi-empresas com painel administrativo centralizado</strong>
+</p>
+
+---
+
 ## 📋 Sobre o Projeto
 
-**Estoque Pro** é um sistema completo e moderno de gerenciamento de estoque desenvolvido com Laravel e Livewire, projetado para permitir que múltiplas empresas gerenciem seus produtos, movimentações, fornecedores e relatórios de forma independente e segura, com painel administrativo centralizado.
+**Estoque Pro** é uma solução completa e profissional de gerenciamento de estoque desenvolvida com **Laravel 8** e **Livewire 2**, projetada para atender múltiplas empresas de forma simultânea e independente. O sistema oferece controle total sobre produtos, movimentações, fornecedores, categorias e relatórios, com uma interface moderna que suporta **Dark Mode** completo.
 
-### 🎯 Principais Funcionalidades
+### ✨ Destaques
 
-#### 👥 Para Empresas
-- ✅ **Autenticação por CNPJ** - Login seguro com validação de CNPJ
-- 🏢 **Multi-Tenant** - Gestão isolada de dados por empresa
-- 📦 **Gestão de Produtos** - CRUD completo com categorias e fornecedores
-- 📊 **Página de Detalhes** - Visão completa de produtos com estatísticas e gráficos
-- 🔄 **Movimentações** - Registro de entradas/saídas com atualização automática
-- 📈 **Dashboard Interativo** - Gráficos em tempo real com Chart.js
-- 🏪 **Fornecedores** - Gestão de fornecedores próprios ou uso de globais
-- 📂 **Categorias** - Organização de produtos por categorias
-- 👤 **Perfil** - Edição de dados e troca de senha
-- 📋 **Relatórios** - Exportação para PDF e Excel
+- 🎨 **Interface Moderna** - Design responsivo com Tailwind CSS e animações fluidas
+- 🌙 **Dark Mode Completo** - Tema escuro em todas as views com transições suaves
+- 📱 **Responsivo** - Funciona perfeitamente em desktops, tablets e smartphones
+- ⚡ **Performance** - Carregamento rápido com Livewire e DataTables
+- 🔒 **Segurança** - Autenticação multi-guard e isolamento de dados por empresa
+- 🐳 **Docker Ready** - Deploy facilitado com Docker Compose
 
-#### 🔐 Para Administradores
-- 🛡️ **Painel Admin** - Dashboard administrativo completo
-- 🏢 **Gerenciamento de Empresas** - CRUD completo de empresas
-- 🚚 **Fornecedores Globais** - Sistema de fornecedores compartilhados
-- 📊 **Estatísticas Gerais** - Visão consolidada de todas as empresas
-- 👥 **Controle de Acesso** - Ativar/desativar empresas
-- 🔍 **Monitoramento** - Acompanhar atividades do sistema
+---
+
+## 🎯 Principais Funcionalidades
+
+### 👥 Painel da Empresa
+
+#### Autenticação e Segurança
+- ✅ **Login por CNPJ** - Autenticação segura com validação de CNPJ
+- 🔐 **Multi-Guard** - Sistema de autenticação separado para empresas e admin
+- 🏢 **Isolamento de Dados** - Cada empresa visualiza apenas seus próprios dados
+- 🔑 **Gerenciamento de Senha** - Alteração segura de senha com criptografia
+
+#### Dashboard Interativo
+- 📊 **Cards Estatísticos** - Total de produtos, valor em estoque, alertas e lucros
+- 📈 **Gráficos Dinâmicos** - Chart.js com movimentações dos últimos 7 dias
+- 🔥 **Top 5 Produtos** - Produtos mais vendidos nos últimos 30 dias
+- ⚠️ **Alertas de Estoque** - Notificações de produtos com estoque baixo
+- 💰 **Resumo Financeiro** - Total de entradas, saídas e lucro bruto
+
+#### Gestão de Produtos
+- 📦 **CRUD Completo** - Criar, editar, visualizar e excluir produtos
+- 🖼️ **Upload de Imagens** - Suporte a imagens de produtos
+- 🏷️ **SKU Automático** - Geração automática de códigos únicos
+- 📂 **Categorização** - Organização por categorias com cores
+- 🚚 **Fornecedores** - Vinculação de produtos a fornecedores
+- 🔍 **Busca Avançada** - Pesquisa por nome, SKU ou descrição
+- 📋 **Exportação** - Relatórios em PDF e Excel
+
+#### Página de Detalhes do Produto
+- 📊 **Visão Completa** - Todas as informações do produto em uma tela
+- 💹 **Estatísticas** - Preço, quantidade, valor total e status
+- 📈 **Gráfico de Movimentações** - Histórico visual de entradas/saídas
+- 📋 **Histórico Completo** - Todas as movimentações do produto
+- 🏪 **Informações do Fornecedor** - Dados de contato e relacionamento
+
+#### Movimentações de Estoque
+- 🔄 **Registro de Entradas** - Controle de compras e recebimentos
+- 📤 **Registro de Saídas** - Controle de vendas e baixas
+- 🔢 **Atualização Automática** - Estoque atualizado em tempo real
+- 📝 **Observações** - Campo para anotações em cada movimentação
+- 💵 **Valores Unitários** - Registro de preço por unidade
+- 📊 **Filtros Avançados** - Por tipo, período e produto
+- 📄 **Relatórios** - Exportação detalhada em PDF e Excel
+
+#### Fornecedores
+- 🏪 **Modo Duplo** - Usar fornecedores próprios ou globais do sistema
+- ➕ **CRUD Completo** - Gerenciamento total de fornecedores próprios
+- 📇 **Dados Completos** - CNPJ, contatos, endereço e observações
+- 🔄 **Alternância Simples** - Trocar entre próprios e globais facilmente
+- 🌐 **Fornecedores Globais** - Acesso a base compartilhada do sistema
+
+#### Categorias
+- 📂 **Organização Visual** - Categorias com cores personalizadas
+- ✏️ **Gestão Fácil** - Modal para criar/editar rapidamente
+- 📊 **Contagem de Produtos** - Quantidade de produtos por categoria
+- ✅ **Status Ativo/Inativo** - Controle de visibilidade
+- 🎨 **Seletor de Cores** - Escolha de cores com color picker
+
+#### Auditoria
+- 📜 **Log de Atividades** - Registro de todas as ações no sistema
+- 👤 **Rastreamento** - Identifica usuário, data e hora de cada ação
+- 🔍 **Filtros** - Por ação (criação, edição, exclusão), módulo e período
+- 📊 **Estatísticas** - Total de logs hoje, na semana e geral
+
+#### Perfil
+- 👤 **Edição de Dados** - Atualização de informações da empresa
+- 📞 **Contatos** - Email, telefone e endereço
+- 🔑 **Alteração de Senha** - Troca segura com confirmação
+- ℹ️ **Informações Visuais** - Avatar com inicial e status da conta
+
+### 🔐 Painel Administrativo
+
+#### Dashboard Admin
+- 📊 **Visão Consolidada** - Estatísticas de todas as empresas
+- 🏢 **Total de Empresas** - Ativas e cadastradas
+- 📦 **Produtos Totais** - Somatório de todos os produtos
+- 💰 **Valor Total** - Valor consolidado em estoque
+- 📈 **Gráficos** - Visualização de dados agregados
+
+#### Gerenciamento de Empresas
+- ➕ **Cadastro de Empresas** - Criar novas empresas no sistema
+- ✏️ **Edição** - Atualizar dados de empresas existentes
+- 🗑️ **Exclusão** - Remover empresas (com confirmação)
+- ✅ **Ativar/Desativar** - Controle de acesso das empresas
+- 🔍 **Busca** - Pesquisa por CNPJ, razão social ou nome fantasia
+
+#### Fornecedores Globais
+- 🌐 **Base Compartilhada** - Fornecedores disponíveis para todas as empresas
+- ➕ **CRUD Completo** - Gestão total dos fornecedores globais
+- 📊 **Uso por Empresas** - Visualizar quais empresas usam cada fornecedor
 
 ---
 
 ## 🛠️ Tecnologias Utilizadas
 
 ### Backend
-- **Laravel 8.83.29** - Framework PHP para desenvolvimento web
-- **Livewire 2.12.8** - Framework full-stack para interfaces dinâmicas
-- **PHP 8.3** - Linguagem de programação
-- **MySQL 8.0** - Banco de dados relacional
-
-### Infrastructure
-- **Docker** - Containerização da aplicação
-- **Docker Compose** - Orquestração de containers
-- **Nginx** - Servidor web
-- **Redis** - Sistema de cache
+- **Laravel 8.83.29** - Framework PHP robusto e moderno
+- **Livewire 2.12.8** - Framework full-stack reativo
+- **PHP 8.3** - Linguagem de programação de alto desempenho
+- **MySQL 8.0** - Banco de dados relacional confiável
 
 ### Frontend
-- **Tailwind CSS** - Framework CSS utility-first
-- **Chart.js 4.4.0** - Biblioteca para gráficos interativos
-- **Font Awesome 6.4.0** - Ícones vetoriais
-- **jQuery 3.6.0** - Biblioteca JavaScript
-- **jQuery Mask Plugin 1.14.16** - Máscaras de input (CNPJ, telefone, moeda)
+- **Tailwind CSS 3.x** - Framework CSS utility-first
+- **Alpine.js** - Framework JavaScript leve (via Livewire)
+- **Font Awesome 6** - Biblioteca de ícones
+- **Chart.js 4.4.0** - Gráficos interativos
+- **DataTables 2.1.8** - Tabelas avançadas com ordenação e filtros
+- **Dark Mode** - Tema escuro completo com localStorage
 
+### Bibliotecas PHP
+- **Maatwebsite Excel 3.1** - Exportação para Excel
+- **DomPDF 2.0** - Geração de PDF
+- **Laravel Sanctum** - Autenticação de API
+
+### Infraestrutura
+- **Docker** - Containerização da aplicação
+- **Docker Compose** - Orquestração de serviços
+- **Nginx** - Servidor web de alto desempenho
+- **Redis** - Cache e filas (opcional)
 ---
 
 ## 📦 Estrutura do Projeto
 
 ```
-projeto-laravel/
+pw-estoque_pro/
 ├── app/
+│   ├── Exports/
+│   │   ├── MovementsExport.php          # Exportação movimentações Excel
+│   │   └── ProductsExport.php           # Exportação produtos Excel
+│   ├── Helpers/
+│   │   └── TenantHelper.php             # Helper multi-tenant
 │   ├── Http/
 │   │   ├── Controllers/
-│   │   │   └── Admin/
-│   │   │       ├── AdminAuthController.php      # Autenticação admin
-│   │   │       └── AdminDashboardController.php # Dashboard admin
-│   │   ├── Livewire/
 │   │   │   ├── Admin/
-│   │   │   │   ├── CompanyManager.php           # CRUD empresas
-│   │   │   │   └── GlobalSupplierManager.php    # CRUD fornecedores globais
+│   │   │   │   ├── AdminAuthController.php
+│   │   │   │   ├── AdminDashboardController.php
+│   │   │   │   └── CompanyController.php
 │   │   │   ├── Auth/
-│   │   │   │   ├── Login.php                    # Login empresas
-│   │   │   │   └── Register.php                 # Registro empresas
-│   │   │   ├── CategoryManager.php              # Gestão categorias
-│   │   │   ├── Dashboard.php                    # Dashboard empresa
-│   │   │   ├── ProductDetails.php               # Detalhes produto
-│   │   │   ├── ProductList.php                  # Lista produtos
-│   │   │   ├── ProductMovementManager.php       # Movimentações
-│   │   │   ├── Profile.php                      # Perfil empresa
-│   │   │   └── SupplierManager.php              # Gestão fornecedores
+│   │   │   │   └── CompanyAuthController.php
+│   │   │   ├── DashboardController.php
+│   │   │   ├── MovementController.php
+│   │   │   ├── ProductController.php
+│   │   │   └── ReportController.php     # Geração de PDF
+│   │   ├── Livewire/
+│   │   │   ├── AuditLogList.php
+│   │   │   ├── CategoryList.php
+│   │   │   ├── CompanyForm.php
+│   │   │   ├── CompanyList.php
+│   │   │   ├── CompanySelector.php
+│   │   │   ├── Dashboard.php
+│   │   │   ├── MovementForm.php
+│   │   │   ├── MovementList.php
+│   │   │   ├── Notifications.php
+│   │   │   ├── ProductDetails.php
+│   │   │   ├── ProductForm.php
+│   │   │   ├── ProductList.php
+│   │   │   ├── Profile.php
+│   │   │   └── SupplierList.php
 │   │   └── Middleware/
-│   │       ├── Authenticate.php                 # Middleware auth customizado
-│   │       └── TenantMiddleware.php             # Isolamento multi-tenant
-│   └── Models/
-│       ├── Admin.php                            # Model admin
-│       ├── Category.php                         # Model categorias
-│       ├── Company.php                          # Model empresas
-│       ├── Product.php                          # Model produtos
-│       ├── ProductMovement.php                  # Model movimentações
-│       └── Supplier.php                         # Model fornecedores
+│   │       ├── AdminMiddleware.php
+│   │       └── CompanySelectedMiddleware.php
+│   ├── Models/
+│   │   ├── Admin.php
+│   │   ├── AuditLog.php
+│   │   ├── Category.php
+│   │   ├── Company.php
+│   │   ├── Product.php
+│   │   ├── ProductMovement.php
+│   │   └── Supplier.php
+│   └── Traits/
+│       └── Auditable.php                # Trait para auditoria
 │
 ├── database/
 │   ├── migrations/
-│   │   ├── *_create_companies_table.php
-│   │   ├── *_create_products_table.php
-│   │   ├── *_create_categories_table.php
-│   │   ├── *_create_suppliers_table.php
-│   │   ├── *_create_product_movements_table.php
-│   │   └── *_create_admins_table.php
+│   │   ├── 2014_10_12_000000_create_users_table.php
+│   │   ├── 2024_*_create_companies_table.php
+│   │   ├── 2024_*_create_categories_table.php
+│   │   ├── 2024_*_create_suppliers_table.php
+│   │   ├── 2024_*_create_products_table.php
+│   │   ├── 2024_*_create_product_movements_table.php
+│   │   ├── 2024_*_create_admins_table.php
+│   │   └── 2024_*_create_audit_logs_table.php
 │   └── seeders/
-│       ├── AdminSeeder.php                      # Admin padrão
-│       ├── CompanySeeder.php                    # Empresas exemplo
-│       ├── CategorySeeder.php                   # Categorias padrão
-│       ├── SupplierSeeder.php                   # Fornecedores exemplo
-│       ├── ProductSeeder.php                    # Produtos exemplo
-│       └── ProductMovementSeeder.php            # Movimentações exemplo
+│       ├── DatabaseSeeder.php
+│       ├── AdminSeeder.php
+│       ├── CompanySeeder.php
+│       ├── CategorySeeder.php
+│       ├── SupplierSeeder.php
+│       ├── ProductSeeder.php
+│       └── ProductMovementSeeder.php
+│
+├── public/
+│   ├── css/
+│   │   └── modern-theme.css             # CSS customizado + Dark Mode
+│   └── storage/                         # Symlink para storage/app/public
 │
 ├── resources/
 │   └── views/
 │       ├── admin/
-│       │   ├── layout.blade.php                 # Layout admin
-│       │   ├── dashboard.blade.php              # Dashboard admin
-│       │   ├── companies.blade.php              # Lista empresas
-│       │   ├── company-form.blade.php           # Form empresas
-│       │   ├── company-details.blade.php        # Detalhes empresa
-│       │   └── global-suppliers.blade.php       # Fornecedores globais
-│       ├── layouts/
-│       │   ├── app.blade.php                    # Layout principal empresa
-│       │   └── guest.blade.php                  # Layout autenticação
-│       ├── livewire/                            # Views componentes Livewire
-│       ├── products/
-│       │   ├── index.blade.php                  # Lista produtos
-│       │   ├── show.blade.php                   # Detalhes produto
-│       │   ├── create.blade.php                 # Criar produto
-│       │   └── edit.blade.php                   # Editar produto
-│       ├── welcome.blade.php                    # Landing page
-│       └── dashboard.blade.php                  # Dashboard empresa
+│       │   ├── layout.blade.php
+│       │   ├── login.blade.php
+│       │   ├── dashboard.blade.php
+│       │   └── companies.blade.php
+│       ├── auth/
+│       │   └── login.blade.php
+│       ├── components/
+│       │   ├── app-layout.blade.php     # Layout com sidebar e dark mode
+│       │   └── guest-layout.blade.php
+│       ├── livewire/                    # Views dos componentes Livewire
+│       │   ├── audit-log-list.blade.php
+│       │   ├── category-list.blade.php
+│       │   ├── company-*.blade.php
+│       │   ├── dashboard.blade.php
+│       │   ├── movement-*.blade.php
+│       │   ├── product-*.blade.php
+│       │   ├── profile.blade.php
+│       │   └── supplier-list.blade.php
+│       └── welcome.blade.php
 │
 ├── routes/
-│   └── web.php                                  # Rotas do sistema
+│   └── web.php                          # Rotas da aplicação
 │
-└── config/
-    └── auth.php                                 # Configuração guards
+├── docker-compose.yml                   # Orquestração Docker
+├── Dockerfile                           # Imagem da aplicação
+└── README.md                            # Este arquivo
 ```
 
 ---
@@ -303,29 +419,90 @@ php artisan serve
 
 ---
 
-## 🔐 Credenciais de Teste
+## 🔐 Credenciais de Acesso
 
-O sistema vem com dados de exemplo pré-cadastrados:
+### 👨‍💼 Administrador do Sistema
 
-### 👨‍💼 Administrador
-| Tipo | Email | Senha | URL |
-|------|-------|-------|-----|
-| Admin | admin@sistema.com | admin123 | /admin/login |
+O administrador possui acesso completo ao painel de gerenciamento de empresas:
 
-### 🏢 Empresas
-| Empresa | CNPJ | Senha | URL |
-|---------|------|-------|-----|
-| TechSol | 12.345.678/0001-95 | senha123 | /login |
-| ABC Store | 98.765.432/0001-10 | senha123 | /login |
-| XYZ Distribuidora | 11.222.333/0001-44 | senha123 | /login |
+| Campo | Valor |
+|-------|-------|
+| **URL de Acesso** | http://localhost:8080/admin/login |
+| **Email** | admin@admin.com |
+| **Senha** | admin123 |
 
-### 📊 Dados de Exemplo Inclusos
-- **1 Administrador** com acesso total
-- **3 Empresas** ativas e configuradas
-- **8 Fornecedores** (5 globais + 3 específicos)
-- **12 Categorias** padrão
-- **30 Produtos** distribuídos entre empresas
-- **150+ Movimentações** de exemplo
+**Funcionalidades do Admin:**
+- ✅ Criar, editar e excluir empresas
+- ✅ Gerenciar fornecedores globais (compartilhados entre todas as empresas)
+- ✅ Visualizar estatísticas gerais do sistema
+- ✅ Acesso a logs de auditoria de todas as empresas
+
+---
+
+### 🏢 Empresas de Teste
+
+O sistema vem com **3 empresas** pré-cadastradas com dados completos:
+
+#### Empresa 1: **TechSol Tecnologia Ltda**
+| Campo | Valor |
+|-------|-------|
+| **URL de Acesso** | http://localhost:8080/login |
+| **CNPJ** | 12.345.678/0001-95 |
+| **Senha** | senha123 |
+| **Razão Social** | TechSol Tecnologia Ltda |
+| **Email** | contato@techsol.com.br |
+| **Telefone** | (11) 98765-4321 |
+
+#### Empresa 2: **ABC Store Comércio**
+| Campo | Valor |
+|-------|-------|
+| **URL de Acesso** | http://localhost:8080/login |
+| **CNPJ** | 98.765.432/0001-10 |
+| **Senha** | senha123 |
+| **Razão Social** | ABC Store Comércio Ltda |
+| **Email** | contato@abcstore.com.br |
+| **Telefone** | (21) 91234-5678 |
+
+#### Empresa 3: **XYZ Distribuidora**
+| Campo | Valor |
+|-------|-------|
+| **URL de Acesso** | http://localhost:8080/login |
+| **CNPJ** | 11.222.333/0001-44 |
+| **Senha** | senha123 |
+| **Razão Social** | XYZ Distribuidora S.A. |
+| **Email** | contato@xyzdistribuidora.com.br |
+| **Telefone** | (11) 95555-1234 |
+
+> **⚠️ Importante**: No login de empresas, use apenas o **CNPJ** (sem formatação ou com pontos/barras) e a **senha**.
+
+---
+
+### 📊 Dados de Exemplo no Sistema
+
+Após executar `php artisan migrate:fresh --seed`, o banco será populado com:
+
+| Tipo de Dado | Quantidade | Descrição |
+|--------------|------------|-----------|
+| **Administradores** | 1 | Acesso total ao sistema |
+| **Empresas** | 3 | Empresas ativas com dados completos |
+| **Categorias** | 12+ | Eletrônicos, Alimentos, Roupas, etc. |
+| **Fornecedores Globais** | 5 | Disponíveis para todas as empresas |
+| **Fornecedores por Empresa** | 3-5 | Específicos de cada empresa |
+| **Produtos** | 30+ | Distribuídos entre as 3 empresas |
+| **Movimentações** | 150+ | Entradas e saídas de estoque |
+| **Logs de Auditoria** | 200+ | Rastreamento de todas as ações |
+
+---
+
+### 🎯 Fluxo de Teste Recomendado
+
+1. **Faça login como Admin** → Explore o painel de empresas e fornecedores globais
+2. **Faça login como Empresa** (ex: TechSol) → Navegue pelo dashboard e veja os produtos
+3. **Teste o Dark Mode** → Clique no ícone 🌙/☀️ no topo direito
+4. **Crie um Produto** → Produtos → Novo Produto
+5. **Registre uma Movimentação** → Movimentações → Nova Movimentação
+6. **Exporte Relatórios** → Teste Excel/PDF nas telas de produtos e movimentações
+7. **Verifique Auditoria** → Veja os logs de todas as ações realizadas
 
 ---
 
@@ -811,42 +988,54 @@ Route::middleware(['auth:company'])->group(function () {
 
 ### 🚀 Próximas Implementações
 - [ ] **Dashboard Avançado**
-  - [ ] Mais gráficos e métricas
-  - [ ] Comparativos entre períodos
-  - [ ] Previsão de estoque
+  - [ ] Mais gráficos e métricas comparativas
+  - [ ] Análise de tendências e previsão de estoque
+  - [ ] Comparativos entre períodos customizados
   
-- [ ] **Notificações**
-  - [ ] Sistema de notificações push
-  - [ ] Alertas de estoque baixo via email
-  - [ ] Notificações de movimentações críticas
+- [ ] **Notificações em Tempo Real**
+  - [ ] Sistema de notificações push no navegador
+  - [ ] Alertas de estoque baixo via email automático
+  - [ ] Webhooks para integrações externas
   
 - [ ] **Relatórios Avançados**
-  - [ ] Relatórios personalizados
-  - [ ] Agendamento de relatórios
-  - [ ] Análise de tendências
+  - [ ] Relatórios personalizados com filtros customizados
+  - [ ] Agendamento automático de relatórios
+  - [ ] Análise de lucratividade e ROI
+  - [ ] Dashboards personalizáveis por usuário
   
-- [ ] **API REST**
-  - [ ] Endpoints para integrações
-  - [ ] Documentação Swagger
+- [ ] **API REST Completa**
+  - [ ] Endpoints RESTful para integrações
+  - [ ] Documentação Swagger/OpenAPI
   - [ ] OAuth2 authentication
+  - [ ] Rate limiting por API key
   
-- [ ] **Auditoria**
-  - [ ] Logs detalhados de ações
-  - [ ] Rastreamento de mudanças
-  - [ ] Histórico de acessos
+- [ ] **Auditoria Completa**
+  - [x] Sistema de logs básico implementado
+  - [ ] Rastreamento detalhado de mudanças com diff
+  - [ ] Histórico de acessos e sessões
+  - [ ] Relatório de auditoria exportável
   
-- [ ] **Melhorias UX**
-  - [ ] Implementar DataTables nas listagens
-  - [ ] Dark mode
-  - [ ] PWA (Progressive Web App)
-  - [ ] Atalhos de teclado
+- [ ] **Melhorias de UX/UI**
+  - [x] DataTables implementado em todas as listagens
+  - [x] Dark Mode completo com persistência
+  - [ ] PWA (Progressive Web App) com offline support
+  - [ ] Atalhos de teclado para navegação rápida
+  - [ ] Tour guiado para novos usuários
   
 - [ ] **Funcionalidades Extras**
   - [ ] Importação em massa (CSV/Excel)
-  - [ ] Backup automático
-  - [ ] Múltiplos idiomas (i18n)
-  - [ ] Código de barras para produtos
-  - [ ] Integração com sistemas de pagamento
+  - [ ] Backup automático agendado
+  - [ ] Múltiplos idiomas (i18n - PT-BR, EN, ES)
+  - [ ] Geração e leitura de códigos de barras
+  - [ ] Integração com e-commerce (WooCommerce, Shopify)
+  - [ ] Sistema de pedidos de compra
+  - [ ] Integração com NFe
+  
+- [ ] **Performance e Escalabilidade**
+  - [ ] Cache Redis para queries frequentes
+  - [ ] Queue system para tarefas pesadas
+  - [ ] Otimização de imagens com lazy loading
+  - [ ] CDN para assets estáticos
 
 ---
 
@@ -889,6 +1078,11 @@ Route::middleware(['auth:company'])->group(function () {
        │ HTTP Request
        ▼
 ┌──────────────┐
+│   Nginx      │ ← Docker container (porta 8080)
+└──────┬───────┘
+       │
+       ▼
+┌──────────────┐
 │   Routes     │ ← web.php (routing)
 └──────┬───────┘
        │
@@ -914,8 +1108,39 @@ Route::middleware(['auth:company'])->group(function () {
                               │
                               ▼
                     ┌──────────────────┐
-                    │  SQLite Database │
+                    │  MySQL Database  │
+                    │ (Docker container)│
                     └──────────────────┘
+```
+
+### Isolamento Multi-Tenant
+```
+┌─────────────────────────────────────────────────────┐
+│              Request com Guard: company              │
+└────────────────────┬────────────────────────────────┘
+                     │
+                     ▼
+        ┌────────────────────────────┐
+        │    TenantMiddleware        │
+        │  $companyId = auth()->id() │
+        └────────────┬───────────────┘
+                     │
+                     ▼
+        ┌────────────────────────────┐
+        │    Global Scope Aplicado   │
+        │ WHERE company_id = ?       │
+        └────────────┬───────────────┘
+                     │
+         ┌───────────┴───────────┐
+         │                       │
+         ▼                       ▼
+┌─────────────────┐   ┌──────────────────┐
+│   Products      │   │  Movements       │
+│ (filtered)      │   │  (filtered)      │
+└─────────────────┘   └──────────────────┘
+
+❌ Company A não vê dados de Company B
+✅ Admin vê todos os dados (sem scope)
 ```
 
 ## 📊 Tecnologias e Padrões
@@ -938,38 +1163,208 @@ Route::middleware(['auth:company'])->group(function () {
 - ✅ **Soft Deletes**: Recuperação de dados
 - ✅ **Seeders**: Dados de exemplo para desenvolvimento
 
-## 📝 Licença
+---
 
-Este projeto foi desenvolvido como sistema de gestão empresarial. Todos os direitos reservados.
+## ❓ Troubleshooting (Solução de Problemas)
+
+### 🐳 Problemas com Docker
+
+**Containers não iniciam:**
+```bash
+# Parar e remover containers existentes
+docker compose down -v
+
+# Limpar cache do Docker
+docker system prune -a
+
+# Rebuild completo
+docker compose build --no-cache
+docker compose up -d
+```
+
+**Erro "port 8080 already in use":**
+```bash
+# Descobrir processo usando a porta
+netstat -ano | findstr :8080
+
+# Matar o processo (Windows)
+taskkill /PID <process_id> /F
+
+# Ou alterar a porta no docker-compose.yml
+# nginx -> ports: "8081:80"
+```
+
+**Permissões de arquivo no Linux/Mac:**
+```bash
+sudo chown -R $USER:$USER .
+chmod -R 755 storage bootstrap/cache
+```
+
+### 🔧 Problemas com Laravel
+
+**Erro 500 após instalação:**
+```bash
+# Limpar todos os caches
+docker compose exec app php artisan cache:clear
+docker compose exec app php artisan config:clear
+docker compose exec app php artisan view:clear
+docker compose exec app php artisan route:clear
+
+# Regenerar autoload
+docker compose exec app composer dump-autoload
+
+# Verificar permissões
+docker compose exec app chmod -R 777 storage bootstrap/cache
+```
+
+**Migrations não funcionam:**
+```bash
+# Verificar conexão com banco
+docker compose exec app php artisan tinker
+# Dentro do tinker: DB::connection()->getPdo();
+
+# Reset completo do banco
+docker compose exec app php artisan migrate:fresh --seed
+```
+
+**Livewire não atualiza:**
+```bash
+# Limpar cache de views
+docker compose exec app php artisan view:clear
+docker compose exec app php artisan livewire:discover
+
+# No navegador: Ctrl + F5 (hard refresh)
+```
+
+### 🎨 Problemas com Frontend
+
+**CSS/JS não carrega:**
+```bash
+# Limpar cache do navegador (Ctrl + Shift + Delete)
+# Ou acessar com aba anônima
+
+# Rebuild dos assets
+npm run production
+
+# Verificar se storage link existe
+docker compose exec app php artisan storage:link
+```
+
+**Dark Mode não persiste:**
+```bash
+# Verificar localStorage no console do navegador
+localStorage.getItem('theme')
+
+# Limpar localStorage
+localStorage.clear()
+```
+
+### 🔐 Problemas de Login
+
+**"Credenciais inválidas" mesmo com senha correta:**
+```bash
+# Verificar se seeders rodaram
+docker compose exec app php artisan db:seed --class=AdminSeeder
+docker compose exec app php artisan db:seed --class=CompanySeeder
+
+# Resetar senha do admin no tinker
+docker compose exec app php artisan tinker
+# Admin::first()->update(['password' => bcrypt('admin123')])
+```
+
+**Guard incorreto:**
+- Login de empresa: usar `/login` (guard: company)
+- Login de admin: usar `/admin/login` (guard: admin)
+
+### 📊 Problemas com Banco de Dados
+
+**Dados não aparecem:**
+```bash
+# Verificar se está logado na empresa correta
+# Verificar middleware TenantMiddleware
+
+# Ver queries executadas (no tinker)
+DB::enableQueryLog();
+Product::all();
+DB::getQueryLog();
+```
+
+---
+
+## 📚 Recursos Adicionais
+
+### Documentação das Tecnologias
+- [Laravel 8 Documentation](https://laravel.com/docs/8.x)
+- [Livewire 2 Documentation](https://laravel-livewire.com/docs/2.x/quickstart)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- [Chart.js Documentation](https://www.chartjs.org/docs/latest/)
+- [Docker Documentation](https://docs.docker.com/)
+
+### Tutoriais Recomendados
+- [Laravel Multi-Tenancy Guide](https://tenancyforlaravel.com/)
+- [Livewire CRUD Tutorial](https://laravel-livewire.com/screencasts/)
+- [Docker para Laravel](https://laravel.com/docs/8.x/sail)
+
+---
+
+## 🔄 Changelog
+
+### Versão 2.0 (Atual)
+- ✅ Sistema multi-tenant completo
+- ✅ Painel administrativo
+- ✅ Dark Mode com persistência
+- ✅ DataTables em todas as listagens
+- ✅ Exportação PDF/Excel
+- ✅ Gráficos interativos Chart.js
+- ✅ Sistema de auditoria básico
+- ✅ Fornecedores globais
+- ✅ Docker Compose configurado
+
+### Versão 1.0 (Base)
+- ✅ CRUD de produtos
+- ✅ Gestão de estoque
+- ✅ Movimentações
+- ✅ Categorias e fornecedores
+- ✅ Autenticação básica
+
+---
+
+## 📝 Licença e Direitos Autorais
+
+**© 2025 Gabriel Ângelo Oliveira Silva. Todos os direitos reservados.**
+
+Este é um **software proprietário** desenvolvido para fins comerciais. O uso, cópia, modificação, distribuição ou comercialização deste software sem autorização prévia e expressa do autor é **estritamente proibido**.
+
+### ⚖️ Termos de Uso
+
+- ❌ **Uso não autorizado** é proibido
+- ❌ **Redistribuição** não permitida sem licença
+- ❌ **Modificação do código-fonte** requer autorização
+- ❌ **Uso comercial por terceiros** não permitido
+- ✅ **Uso para demonstração/portfólio** apenas com créditos ao autor
+
+Para informações sobre **licenciamento comercial**, entre em contato com o autor.
 
 ---
 
 ## 👨‍💻 Autor
 
 **Gabriel Ângelo Oliveira Silva**
-- Estudante de Ciência da Computação - Unipê (P8)
-- Sistema desenvolvido com Laravel, Livewire e Tailwind CSS
+- 🎓 Estudante de Ciência da Computação - Unipê (P8)
+- 💻 Desenvolvedor Full Stack
+- 🚀 Sistema desenvolvido com Laravel, Livewire e Tailwind CSS
 
----
-
-## 🤝 Contribuindo
-
-Contribuições são bem-vindas! Para contribuir:
-
-1. Fork o projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
+### 📧 Contato para Licenciamento
+- Email: contato através do GitHub
+- Licenças comerciais disponíveis mediante consulta
 
 ---
 
 ## 📞 Suporte
 
-Para dúvidas, sugestões ou reportar problemas:
+Para dúvidas sobre o sistema:
 - 📧 Email: Através do sistema
-- 🐛 Issues: Abra uma issue no repositório
-- 💬 Discussões: Use a aba de discussões do GitHub
+- 💼 Suporte comercial disponível para clientes licenciados
 
 ---
 
