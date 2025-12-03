@@ -44,7 +44,7 @@
                     </div>
                     <input wire:model.defer="cnpj" type="text" id="cnpj" maxlength="18"
                         placeholder="00.000.000/0000-00"
-                        class="input-modern w-full pl-20 @error('cnpj') border-red-500 @enderror"
+                        class="input-modern w-full pl-20 dark:bg-gray-700 dark:border-gray-600 dark:text-white @error('cnpj') border-red-500 @enderror"
                         autocomplete="username">
                 </div>
                 @error('cnpj')
@@ -64,7 +64,7 @@
                         <i class="fas fa-lock text-white"></i>
                     </div>
                     <input wire:model.defer="password" type="password" id="password" placeholder="••••••••"
-                        class="input-modern w-full pl-20 @error('password') border-red-500 @enderror"
+                        class="input-modern w-full pl-20 dark:bg-gray-700 dark:border-gray-600 dark:text-white @error('password') border-red-500 @enderror"
                         autocomplete="current-password">
                 </div>
                 @error('password')
@@ -90,14 +90,15 @@
         <div class="mt-8 text-center">
             <div class="relative">
                 <div class="absolute inset-0 flex items-center">
-                    <div class="w-full border-t border-gray-200"></div>
+                    <div class="w-full border-t border-gray-200 dark:border-gray-700"></div>
                 </div>
                 <div class="relative flex justify-center text-sm">
-                    <span class="px-4 bg-white text-gray-500 font-medium">Não tem uma conta?</span>
+                    <span class="px-4 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 font-medium">Não tem
+                        uma conta?</span>
                 </div>
             </div>
             <a href="{{ route('register') }}"
-                class="mt-4 inline-flex items-center px-6 py-3 bg-gradient-to-r from-gray-50 to-gray-100 border-2 border-gray-200 hover:border-indigo-600 text-gray-700 hover:text-indigo-600 font-bold rounded-xl transition-all duration-300 hover:scale-105">
+                class="mt-4 inline-flex items-center px-6 py-3 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-600 border-2 border-gray-200 dark:border-gray-600 hover:border-indigo-600 dark:hover:border-indigo-400 text-gray-700 dark:text-gray-200 hover:text-indigo-600 dark:hover:text-indigo-400 font-bold rounded-xl transition-all duration-300 hover:scale-105">
                 <i class="fas fa-user-plus mr-2"></i>
                 Cadastre sua empresa
             </a>

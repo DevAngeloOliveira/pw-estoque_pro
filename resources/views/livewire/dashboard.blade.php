@@ -249,15 +249,17 @@
         </div>
 
         <!-- Últimas Movimentações -->
-        <div class="bg-white rounded-lg shadow-lg p-6">
-            <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center justify-between">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+            <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-4 flex items-center justify-between">
                 <span><i class="fas fa-history mr-2"></i>Últimas Movimentações</span>
-                <a href="{{ route('movements.index') }}" class="text-sm text-blue-600 hover:text-blue-800">Ver todas
+                <a href="{{ route('movements.index') }}"
+                    class="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300">Ver
+                    todas
                     →</a>
             </h3>
             <div class="overflow-x-auto">
                 <table class="min-w-full">
-                    <thead class="bg-gray-50">
+                    <thead class="bg-gray-50 dark:bg-gray-700">
                         <tr>
                             <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Data</th>
                             <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Produto</th>

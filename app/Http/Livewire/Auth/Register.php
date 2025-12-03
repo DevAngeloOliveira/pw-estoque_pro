@@ -40,19 +40,6 @@ class Register extends Component
         'email.email' => 'E-mail inválido',
     ];
 
-    public function updated($propertyName)
-    {
-        $this->validateOnly($propertyName);
-
-        if ($propertyName === 'cnpj') {
-            $this->cnpj = $this->formatCnpj($this->cnpj);
-        }
-
-        if ($propertyName === 'telefone') {
-            $this->telefone = $this->formatTelefone($this->telefone);
-        }
-    }
-
     public function formatCnpj($cnpj)
     {
         $cnpj = preg_replace('/\D/', '', $cnpj);
