@@ -13,6 +13,8 @@ services:
         value: production
       - key: APP_DEBUG
         value: false
+      - key: APP_URL
+        value: https://pw-estoque-pro.onrender.com
       - key: LOG_CHANNEL
         value: errorlog
       - key: LOG_LEVEL
