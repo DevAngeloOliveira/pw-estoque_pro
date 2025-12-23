@@ -50,3 +50,9 @@ echo "🧹 Limpando cache..."
 rm -rf bootstrap/cache/*.php 2>/dev/null || true
 rm -rf storage/framework/cache/data/* 2>/dev/null || true
 rm -rf storage/framework/views/* 2>/dev/null || true
+
+echo "✅ Aplicação pronta!"
+echo "📧 Login: admin@sistema.com"
+echo "🔐 Senha: admin123"
+echo "🌐 Iniciando Apache..."
+exec apache2-foreground
