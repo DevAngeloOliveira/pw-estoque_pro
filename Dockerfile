@@ -18,7 +18,7 @@ COPY public ./public
 RUN npm run production
 
 # Stage 2: Application
-FROM php:8.3-fpm-apache
+FROM php:8.3-apache
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
