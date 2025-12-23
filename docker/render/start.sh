@@ -6,37 +6,39 @@ echo "🚀 Iniciando EstoquePro no Render..."
 # Gerar APP_KEY se não existir
 if [ -z "$APP_KEY" ]; then
     echo "🔑 Gerando APP_KEY..."
-    php artisan key:generate --force --no-interaction
-    export APP_KEY=$(grep APP_KEY .env | cut -d '=' -f2)
+    php artisan key:generate --force --no-interaction || true
 fi
 
-# Aguardar banco de dados
-echo "⏳ Aguardando banco de dados..."
-sleep 10
+# Permissões
+echo "📁 Configurando permissões..."
+chmod -R 775 storage bootstrap/cache 2>/dev/null || true
+chown -R www-data:www-data storage bootstrap/cache 2>/dev/null || true
 
-# Verificar conexão com banco
-until php artisan migrate:status --no-interaction 2>/dev/null; do
-    echo "⏳ Aguardando PostgreSQL ficar disponível..."
+# Tentar rodar migrations se DATABASE_URL existir
+if [ -n "$DATABASE_URL" ]; then
+    echo "📦 DATABASE_URL detectada, configurando banco..."
+
+    # Aguardar banco
     sleep 5
-done
 
-# Executar migrations
-echo "📦 Executando migrations..."
-php artisan migrate --force --no-interaction
-
-# Criar usuário admin
-echo "👤 Criando usuário admin..."
-php artisan db:seed --class=AdminSeeder --force --no-interaction 2>/dev/null || echo "Admin já existe"
+    # Tentar migrations (máximo 3 tentativas)
+    for i in {1..3}; do
+        echo "⏳ Tentativa $i de conectar ao PostgreSQL..."
+        if php artisan migrate:status --no-interaction 2>/dev/null; then
+            echo "✅ Banco conectado!"
+            php artisan migrate --force --no-interaction
+            php artisan db:seed --class=AdminSeeder --force --no-interaction 2>/dev/null || echo "⚠️ Seeder pulado"
+            break
+        fi
+        sleep 5
+    done
+fi
 
 # Otimizações Laravel
 echo "⚡ Otimizando aplicação..."
-php artisan config:cache --no-interaction
-php artisan route:cache --no-interaction
-php artisan view:cache --no-interaction
-
-# Permissões finais
-chmod -R 775 storage bootstrap/cache
-chown -R www-data:www-data storage bootstrap/cache
+php artisan config:cache --no-interaction 2>/dev/null || true
+php artisan route:cache --no-interaction 2>/dev/null || true
+php artisan view:cache --no-interaction 2>/dev/null || true
 
 echo "✅ Aplicação pronta!"
 echo "📧 Login: admin@sistema.com"
