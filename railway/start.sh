@@ -6,7 +6,10 @@ echo "🚀 Iniciando aplicação no Railway..."
 # Gerar APP_KEY se não existir
 if [ -z "$APP_KEY" ]; then
     echo "🔑 Gerando APP_KEY..."
-    php artisan key:generate --force
+    # Gera a chave e exporta como variável de ambiente
+    export APP_KEY=$(php artisan key:generate --show)
+    echo "✅ APP_KEY gerada: $APP_KEY"
+    echo "⚠️  IMPORTANTE: Adicione esta chave nas variáveis do Railway para persistir!"
 fi
 
 # Criar diretórios necessários
