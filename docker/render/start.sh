@@ -45,4 +45,7 @@ echo "📧 Login: admin@sistema.com"
 echo "🔐 Senha: admin123"
 
 # Iniciar Apache
+echo "🌐 Iniciando Apache..."
+exec apache2-foreground
+
 exec apache2-foreground

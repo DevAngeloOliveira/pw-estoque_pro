@@ -77,9 +77,6 @@ RUN chmod +x /start.sh
 # Expose port 80 for Apache
 EXPOSE 80
 
-# Start Apache
+# Start Apache via script
 CMD ["/start.sh"]
 
-
-# Start with entrypoint script
-ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
