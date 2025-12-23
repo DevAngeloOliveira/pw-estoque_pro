@@ -41,9 +41,18 @@ fi
 
 # Otimizar Laravel
 echo "⚡ Otimizando Laravel..."
+# Limpar caches antigos
+php artisan config:clear 2>/dev/null || true
+php artisan cache:clear 2>/dev/null || true
+
+# Cachear para produção
 php artisan config:cache
 php artisan route:cache
 php artisan view:cache
+
+# Otimizar autoloader
+echo "📦 Otimizando Composer..."
+composer dump-autoload --optimize --no-dev --quiet 2>/dev/null || true
 
 # Substituir PORT no nginx.conf se necessário
 if [ -n "$PORT" ]; then
