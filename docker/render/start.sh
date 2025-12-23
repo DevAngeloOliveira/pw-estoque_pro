@@ -34,18 +34,8 @@ if [ -n "$DATABASE_URL" ]; then
     done
 fi
 
-# Otimizações Laravel
-echo "⚡ Otimizando aplicação..."
-php artisan config:cache --no-interaction 2>/dev/null || true
-php artisan route:cache --no-interaction 2>/dev/null || true
-php artisan view:cache --no-interaction 2>/dev/null || true
-
-echo "✅ Aplicação pronta!"
-echo "📧 Login: admin@sistema.com"
-echo "🔐 Senha: admin123"
-
-# Iniciar Apache
-echo "🌐 Iniciando Apache..."
-exec apache2-foreground
-
-exec apache2-foreground
+# Limpar cache compilado (pode ter sido gerado com Ignition)
+echo "🧹 Limpando cache..."
+rm -rf bootstrap/cache/*.php 2>/dev/null || true
+rm -rf storage/framework/cache/data/* 2>/dev/null || true
+rm -rf storage/framework/views/* 2>/dev/null || true
