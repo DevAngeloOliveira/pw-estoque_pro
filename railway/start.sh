@@ -50,10 +50,6 @@ php artisan config:cache
 php artisan route:cache
 php artisan view:cache
 
-# Otimizar autoloader
-echo "📦 Otimizando Composer..."
-composer dump-autoload --optimize --no-dev --quiet 2>/dev/null || true
-
 # Substituir PORT no nginx.conf se necessário
 if [ -n "$PORT" ]; then
     sed -i "s/listen 8080/listen $PORT/g" /etc/nginx/nginx.conf
