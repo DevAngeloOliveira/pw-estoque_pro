@@ -3,6 +3,14 @@ set -e
 
 echo "🚀 Iniciando EstoquePro no Render..."
 
+# CRÍTICO: Deletar caches compilados localmente (têm referência ao Ignition)
+echo "🧹 Limpando caches compilados localmente..."
+rm -f bootstrap/cache/packages.php
+rm -f bootstrap/cache/services.php
+rm -f bootstrap/cache/config.php
+rm -rf storage/framework/cache/data/*
+rm -rf storage/framework/views/*
+
 # Gerar APP_KEY se não existir
 if [ -z "$APP_KEY" ]; then
     echo "🔑 Gerando APP_KEY..."
