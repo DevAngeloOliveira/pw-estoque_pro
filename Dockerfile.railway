@@ -39,9 +39,9 @@ RUN composer install --no-dev --optimize-autoloader --no-scripts --no-interactio
 
 # Copy application
 COPY . .
-COPY --from=node_builder /app/public/css ./public/css
-COPY --from=node_builder /app/public/js ./public/js
-COPY --from=node_builder /app/public/mix-manifest.json ./public/mix-manifest.json
+
+# Copy built assets from node_builder (only if they exist)
+COPY --from=node_builder /app/public/ ./public/
 
 # Configure PHP for production
 RUN echo "memory_limit = 512M" > /usr/local/etc/php/conf.d/memory.ini \
