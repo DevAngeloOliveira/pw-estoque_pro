@@ -3,6 +3,12 @@ set -e
 
 echo "🚀 Iniciando aplicação no Railway..."
 
+# Gerar APP_KEY se não existir
+if [ -z "$APP_KEY" ]; then
+    echo "🔑 Gerando APP_KEY..."
+    php artisan key:generate --force
+fi
+
 # Criar diretórios necessários
 mkdir -p /var/www/html/storage/framework/{sessions,views,cache}
 mkdir -p /var/www/html/storage/logs
