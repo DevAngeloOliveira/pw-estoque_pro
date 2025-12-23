@@ -26,16 +26,13 @@ chmod -R 775 /var/www/html/bootstrap/cache
 # Aguardar banco de dados (se DATABASE_URL estiver definida)
 if [ -n "$DATABASE_URL" ] || [ -n "$DB_HOST" ]; then
     echo "⏳ Aguardando banco de dados..."
-    max_attempts=30
+    max_attempts=60
     attempt=0
 
     until php artisan migrate:status 2>/dev/null || [ $attempt -eq $max_attempts ]; do
         attempt=$((attempt + 1))
         echo "Tentativa $attempt/$max_attempts..."
-        sleep 2
-    done
-
-    if [ $attempt -eq $max_attempts ]; then
+        sleep 5
         echo "⚠️  Aviso: Banco de dados não respondeu, continuando mesmo assim..."
     else
         echo "✅ Banco de dados conectado!"
