@@ -50,7 +50,8 @@ WORKDIR /var/www/html
 COPY composer.json composer.lock ./
 
 # Install PHP dependencies (produção apenas, economiza memória)
-RUN composer install --no-dev --optimize-autoloader --no-scripts --no-interaction --prefer-dist
+RUN composer install --no-dev --optimize-autoloader --no-scripts --no-interaction --prefer-dist \
+    && php artisan package:discover --ansi || true
 
 # Copy application code
 COPY . .

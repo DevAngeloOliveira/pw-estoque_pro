@@ -11,10 +11,13 @@ rm -f bootstrap/cache/config.php
 rm -rf storage/framework/cache/data/*
 rm -rf storage/framework/views/*
 
-# Gerar APP_KEY se não existir
+# Gerar APP_KEY via PHP puro (evita carregar Laravel/Ignition)
 if [ -z "$APP_KEY" ]; then
     echo "🔑 Gerando APP_KEY..."
-    php artisan key:generate --force --no-interaction || true
+    APP_KEY="base64:$(openssl rand -base64 32)"
+    export APP_KEY
+    echo "APP_KEY=${APP_KEY}" >> .env
+    echo "✅ APP_KEY gerada"
 fi
 
 # Permissões
