@@ -31,7 +31,9 @@ RUN apt-get update && apt-get install -y \
     unzip \
     libzip-dev \
     && docker-php-ext-configure gd \
-    && docker-php-ext-install pdo_mysql mbstring zip exif pcntl gd \
+    && docker-php-ext-install pdo_mysql mbstring zip exif pcntl gd opcache \
+    && pecl install redis \
+    && docker-php-ext-enable redis \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install Composer
@@ -43,8 +45,8 @@ WORKDIR /var/www/html
 # Copy composer files
 COPY composer.json composer.lock ./
 
-# Install PHP dependencies
-RUN composer install --no-dev --optimize-autoloader --no-scripts --no-interaction
+# Install PHP dependencies (including dev for config cache)
+RUN composer install --optimize-autoloader --no-scripts --no-interaction
 
 # Copy application code
 COPY . .
@@ -52,16 +54,20 @@ COPY . .
 # Copy built assets from node_builder stage
 COPY --from=node_builder /app/public ./public
 
+# Copy custom PHP configuration
+COPY docker/php/php.ini /usr/local/etc/php/conf.d/custom.ini
+
+# Copy entrypoint script
+COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
 # Set proper permissions
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html/storage \
     && chmod -R 755 /var/www/html/bootstrap/cache
 
-# Run Laravel optimization commands
-RUN php artisan route:cache || true
-
 # Expose port 9000 for PHP-FPM
 EXPOSE 9000
 
-# Start PHP-FPM
-CMD ["php-fpm"]
+# Start with entrypoint script
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
